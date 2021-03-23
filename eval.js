@@ -24,7 +24,7 @@ $(document).ready(function()
 	
 	for(loopCount = 0; loopCount < $('div[class=Q]').length; loopCount++)
 	{
-		qObject[loopCount] = {q:$('div[class=Q]').eq(loopCount).html(), plan:'', date:'', val:0, needed:false};
+		qObject[loopCount] = {q:$('div[class=Q]').eq(loopCount).html(), date:'', plan:'', val:0, needed:false};
 		qArray[loopCount] = qObject[loopCount].q;
 	}
 	
