@@ -77,6 +77,7 @@ $(document).ready(function()
 	$('tr').find('div[class=Q]').css('display', 'inline');
 	$('tr').has('div[class=hiddenHeader]').find('input').hide();
 	$('u').contents().unwrap();
+	$('input[name=Complete]').prop('disabled', false);
 	
 	if($('tr').has('div[id=autoGenerate]').find('input').prop('checked') == false)
 	{
