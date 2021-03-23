@@ -27,14 +27,6 @@ $(document).ready(function()
 		qObject[loopCount] = {q:$('div[class=Q]').eq(loopCount).html(), date:'', plan:'', val:0, needed:false};
 		qArray[loopCount] = qObject[loopCount].q;
 	}
-
-	$('.plans').keydown(function(e)
-	{
-		if (e.keyCode == 13 && !e.shiftKey)
-		{
-			e.preventDefault();
-		}
-	});
 	
 	for(loopCount = 0; loopCount < length; loopCount++)
 	{
@@ -157,5 +149,13 @@ $(document).ready(function()
 			$('tr').has('div[id=victim]').find('input').prop('checked', true);
 		}
 				$('tr').has('div[id=victim]').next().find('textarea').val($('tr').has('div[id=victim]').next().find('textarea').val().slice(0, $('tr').has('div[id=victim]').next().find('textarea').val().length-2));
+	});
+
+	$('.plans').keydown(function(e)
+	{
+		if (e.keyCode == 13 && !e.shiftKey)
+		{
+			e.preventDefault();
+		}
 	});
 });
