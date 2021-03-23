@@ -45,12 +45,30 @@ $(document).ready(function()
 		
 		qObject[tempIndex].plan = $('#plan' + tempIndex ).val();
 	});
+	if($('tr').has('div[id=victim]').next().find('textarea').val() != '')
+	{
+		split = $('tr').has('div[id=victim]').next().find('textarea').val().split('\n');
+		split = $.grep(split,function(value)
+		{
+			return value != '';
+		});
+		for(loopCount = 0, index = 0; loopCount < length; loopCount++)
+		{
+			if(qObject[loopCount].q == split[index].slice(18))
+			{
+				qObject[loopCount].date = split[index+1].slice(13);
+				qObject[loopCount].plan = split[index+2].slice(6);
+				qObject[loopCount].needed = true;
+				index = index + 3;
+			}
+		}
+	}
 	for(loopCount = 0; loopCount < length; loopCount++)
 	{
 		if(qObject[loopCount].needed == false)
 		{
-		}
 			$('#area' + loopCount).hide();
+		}
 	}
 	
 	$('tr').has('div[class*=nlcbBr]').find('input[type=checkbox]').before('<br>');
@@ -133,24 +151,6 @@ $(document).ready(function()
 				$('tr').has('div[id=victim]').next().find('textarea').val($('tr').has('div[id=victim]').next().find('textarea').val().slice(0, $('tr').has('div[id=victim]').next().find('textarea').val().length-2));
 	});
 
-	if($('tr').has('div[id=victim]').next().find('textarea').val() != '')
-	{
-		split = $('tr').has('div[id=victim]').next().find('textarea').val().split('\n');
-		split = $.grep(split,function(value)
-		{
-			return value != '';
-		});
-		for(loopCount = 0, index = 0; loopCount < length; loopCount++)
-		{
-			if(qObject[loopCount].q == split[index].slice(18))
-			{
-				qObject[loopCount].date = split[index+1].slice(13);
-				qObject[loopCount].plan = split[index+2].slice(6);
-				index = index + 3;
-			}
-		}
-	}
-	
 	$('.plans').keydown(function(e)
 	{
 		if (e.keyCode == 13 && !e.shiftKey)
