@@ -27,6 +27,14 @@ $(document).ready(function()
 		qObject[loopCount] = {q:$('div[class=Q]').eq(loopCount).html(), date:'', plan:'', val:0, needed:false};
 		qArray[loopCount] = qObject[loopCount].q;
 	}
+
+	$('.plans').keydown(function(e)
+	{
+		if (e.keyCode == 13 && !e.shiftKey)
+		{
+			e.preventDefault();
+		}
+	});
 	
 	for(loopCount = 0; loopCount < length; loopCount++)
 	{
