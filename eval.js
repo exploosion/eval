@@ -59,7 +59,10 @@ $(document).ready(function()
 				qObject[loopCount].date = split[index+1].slice(13);
 				qObject[loopCount].plan = split[index+2].slice(6);
 				qObject[loopCount].needed = true;
-				index = index + 3;
+				if(index + 3 < split.length)
+				{
+					index = index + 3;
+				}
 			}
 		}
 	}
