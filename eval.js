@@ -124,6 +124,10 @@ $(document).ready(function()
 			}
 		}
 		$('tr').has('div[id=autoGenerate]').next().find('textarea').val($('tr').has('div[id=autoGenerate]').next().find('textarea').val().slice(0, $('tr').has('div[id=autoGenerate]').next().find('textarea').val().length-2));
+		if($('tr').has('div[id=autoGenerate]').next().find('textarea').val() == '')
+		{
+			$('tr').has('div[id=autoGenerate]').next().find('textarea').val('Above areas meeting/exceeding expectations');
+		}
 		$('tr').has('div[id=autoGenerate]').next().find('textarea').trigger('change');
 	});
 	
