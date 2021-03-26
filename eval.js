@@ -65,6 +65,17 @@ $(document).ready(function()
 				}
 			}
 		}
+		for(loopCount = 0; loopCount < length; loopCount++)
+		{
+			if(qObject[loopCount].needed == true)
+			{
+				$('#area' + loopCount).show();
+				$('#date' + loopCount).val(qObject[loopCount].date);
+				$('#plan' + loopCount).val(qObject[loopCount].plan);
+				$('#date' + loopCount).prop('required', true);
+				$('#plan' + loopCount).prop('required', true);
+			}
+		}
 	}
 	for(loopCount = 0; loopCount < length; loopCount++)
 	{
@@ -73,12 +84,19 @@ $(document).ready(function()
 			$('#area' + loopCount).hide();
 		}
 	}
+	if($('tr').has('div[id=autoGenerate]').next().find('textarea').val() == '')
+	{
+		$('tr').has('div[id=autoGenerate]').next().find('textarea').val('Above areas meeting/exceeding expectations');
+	}
+	resize($('tr').has('div[id=autoGenerate]').next().find('textarea')[0]);
 	
 	$('tr').has('div[class*=nlcbBr]').find('input[type=checkbox]').before('<br>');
 	$('tr').find('div[class*=nlcbBr]').css('display', 'inline');
 	$('hr[class=line]').css({'margin-top':'-10px', 'width':'100em'});
 	$('tr').find('div[class=Q]').css('display', 'inline');
 	$('tr').has('div[class=hiddenHeader]').find('input').hide();
+	$('tr').has('div[class=hiddenChecks]').find('input').hide();
+	$('td').has('div[id=victim]').hide();
 	$('u').contents().unwrap();
 	$('input[name=Complete]').prop('disabled', false);
 	
@@ -130,13 +148,16 @@ $(document).ready(function()
 		}
 		$('tr').has('div[id=autoGenerate]').next().find('textarea').trigger('change');
 	});
-	
 
 	$('tr').has('div[id=autoGenerate]').next().find('textarea').change(function()
 	{
 		resize(this);
 	});
 	$('.plans').keyup(function()
+	{
+		resize(this);
+	});
+	$('tr').has('div[id=additionalAreas]').next().find('textarea').keyup(function()
 	{
 		resize(this);
 	});
@@ -157,6 +178,13 @@ $(document).ready(function()
 		}
 				$('tr').has('div[id=victim]').next().find('textarea').val($('tr').has('div[id=victim]').next().find('textarea').val().slice(0, $('tr').has('div[id=victim]').next().find('textarea').val().length-2));
 	});
+
+	if($('tr').has('div[id=additionalAreas]').next().find('textarea').val() == '')
+	{
+		$('tr').has('div[id=additionalAreas]').next().find('textarea').val('Area: \nTarget Date: \nPlan: \n\nArea: \nTarget Date: \nPlan: \n\nArea: \nTarget Date: \nPlan: ');
+		resize($('tr').has('div[id=additionalAreas]').next().find('textarea')[0]);
+		$('tr').has('div[id=additionalAreas]').find('input').trigger('click');
+	}
 
 	$('.plans').keydown(function(e)
 	{
