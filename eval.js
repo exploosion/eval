@@ -157,7 +157,7 @@ $(document).ready(function()
 	{
 		resize(this);
 	});
-	$('tr').has('div[id=additionalAreas]').next().find('textarea').change(function()
+	$('tr').has('div[id=additionalAreas]').next().find('textarea').keyup(function()
 	{
 		resize(this);
 	});
@@ -182,7 +182,7 @@ $(document).ready(function()
 	if($('tr').has('div[id=additionalAreas]').next().find('textarea').val() == '')
 	{
 		$('tr').has('div[id=additionalAreas]').next().find('textarea').val('Area: \nTarget Date: \nPlan: \n\nArea: \nTarget Date: \nPlan: \n\nArea: \nTarget Date: \nPlan: ');
-		resize($('tr').has('div[id=additionalAreas]').next().find('textarea')[0]);
+		$('tr').has('div[id=additionalAreas]').find('input').trigger('click');
 		$('tr').has('div[id=additionalAreas]').next().find('textarea').trigger('change');
 	}
 
