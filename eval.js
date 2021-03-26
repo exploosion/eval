@@ -146,6 +146,11 @@ $(document).ready(function()
 		if($('tr').has('div[id=autoGenerate]').next().find('textarea').val() == '')
 		{
 			$('tr').has('div[id=autoGenerate]').next().find('textarea').val('Above areas meeting/exceeding expectations');
+			$('td').has('div[id=plan]').hide();
+		}
+		else
+		{
+			$('td').has('div[id=plan]').show();
 		}
 		$('tr').has('div[id=autoGenerate]').next().find('textarea').trigger('change');
 		resize($('tr').has('div[id=autoGenerate]').next().find('textarea')[0]);
