@@ -22,6 +22,19 @@ $(document).ready(function()
 	qArray = [length];
 	tempArray = [length];
 	
+	$('tr').has('div[id=autoGenerate]').next().find('textarea').change(function()
+	{
+		resize(this);
+	});
+	$('.plans').keyup(function()
+	{
+		resize(this);
+	});
+	$('tr').has('div[id=additionalAreas]').next().find('textarea').keyup(function()
+	{
+		resize(this);
+	});
+	
 	for(loopCount = 0; loopCount < $('div[class=Q]').length; loopCount++)
 	{
 		qObject[loopCount] = {q:$('div[class=Q]').eq(loopCount).html(), date:'', plan:'', val:0, needed:false};
@@ -159,19 +172,6 @@ $(document).ready(function()
 		}
 		$('tr').has('div[id=autoGenerate]').next().find('textarea').trigger('change');
 		resize($('tr').has('div[id=autoGenerate]').next().find('textarea')[0]);
-	});
-
-	$('tr').has('div[id=autoGenerate]').next().find('textarea').change(function()
-	{
-		resize(this);
-	});
-	$('.plans').keyup(function()
-	{
-		resize(this);
-	});
-	$('tr').has('div[id=additionalAreas]').next().find('textarea').keyup(function()
-	{
-		resize(this);
 	});
 	
 	$('input[name=Complete]').click(function()
