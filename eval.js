@@ -34,7 +34,7 @@ $(document).ready(function()
 	{
 		resize(this);
 	});
-	
+
 	for(loopCount = 0; loopCount < $('div[class=Q]').length; loopCount++)
 	{
 		qObject[loopCount] = {q:$('div[class=Q]').eq(loopCount).html(), date:'', plan:'', val:0, needed:false};
@@ -107,7 +107,7 @@ $(document).ready(function()
 		$('td').has('div[id=plan]').show();
 	}
 	$('tr').has('div[id=autoGenerate]').next().find('textarea').trigger('change');
-	resize($('tr').has('div[id=autoGenerate]').next().find('textarea')[0]);
+	setTimeout(resize($('tr').has('div[id=autoGenerate]').next().find('textarea')[0]), 0);
 	
 	$('tr').has('div[class*=nlcbBr]').find('input[type=checkbox]').before('<br>');
 	$('tr').find('div[class*=nlcbBr]').css('display', 'inline');
@@ -171,7 +171,7 @@ $(document).ready(function()
 			$('td').has('div[id=plan]').show();
 		}
 		$('tr').has('div[id=autoGenerate]').next().find('textarea').trigger('change');
-		resize($('tr').has('div[id=autoGenerate]').next().find('textarea')[0]);
+		setTimeout(resize($('tr').has('div[id=autoGenerate]').next().find('textarea')[0]), 0);
 	});
 	
 	$('input[name=Complete]').click(function()
@@ -196,7 +196,7 @@ $(document).ready(function()
 		$('tr').has('div[id=additionalAreas]').next().find('textarea').val('Area: \nTarget Date: \nPlan: \n\nArea: \nTarget Date: \nPlan: \n\nArea: \nTarget Date: \nPlan: ');
 		$('tr').has('div[id=additionalAreas]').find('input').trigger('click');
 		$('tr').has('div[id=additionalAreas]').next().find('textarea').trigger('change');
-		resize($('tr').has('div[id=additionalAreas]').next().find('textarea')[0]);
+		setTimeout(resize($('tr').has('div[id=additionalAreas]').next().find('textarea')[0]), 0);
 	}
 
 	$('.plans').keydown(function(e)
