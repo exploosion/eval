@@ -88,6 +88,7 @@ $(document).ready(function()
 	{
 		$('tr').has('div[id=autoGenerate]').next().find('textarea').val('Above areas meeting/exceeding expectations');
 	}
+	$('tr').has('div[id=autoGenerate]').next().find('textarea').trigger('change');
 	resize($('tr').has('div[id=autoGenerate]').next().find('textarea')[0]);
 	
 	$('tr').has('div[class*=nlcbBr]').find('input[type=checkbox]').before('<br>');
@@ -147,6 +148,7 @@ $(document).ready(function()
 			$('tr').has('div[id=autoGenerate]').next().find('textarea').val('Above areas meeting/exceeding expectations');
 		}
 		$('tr').has('div[id=autoGenerate]').next().find('textarea').trigger('change');
+		resize($('tr').has('div[id=autoGenerate]').next().find('textarea')[0]);
 	});
 
 	$('tr').has('div[id=autoGenerate]').next().find('textarea').change(function()
