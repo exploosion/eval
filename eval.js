@@ -30,7 +30,7 @@ $(document).ready(function()
 	
 	for(loopCount = 0; loopCount < length; loopCount++)
 	{
-		$('div[id=plan]').html($('div[id=plan]').html() + ( '<div class=\'areas\' id=\'area' + loopCount + '\'>' + '<label id-=\'' + 'label' + loopCount + '\'>Improvement Area: </label>' + qObject[loopCount].q + '<br>') + ('<label>Target Date:</label><br><input class=\'dates\'id=\'' + 'date' + loopCount + '\' type=\'date\'></input><br>') + ('<label>Plan:</label><br><textarea class=\'plans\' id=\'' + 'plan' + loopCount + '\' cols=\'71\'></textarea><br><br>' + '</div>'));
+		$('div[id=plan]').html($('div[id=plan]').html() + ( '<div class=\'areas\' id=\'area' + loopCount + '\'>' + '<label id-=\'' + 'label' + loopCount + '\'><b>Improvement Area: </b></label>' + qObject[loopCount].q + '<br>') + ('<label><b>Target Date:</b></label><br><input class=\'dates\'id=\'' + 'date' + loopCount + '\' type=\'date\'></input><br>') + ('<label><b>Plan:</b></label><br><textarea class=\'plans\' id=\'' + 'plan' + loopCount + '\' cols=\'71\'></textarea><br><br>' + '</div>'));
 	}
 	$('.dates').change(function()
 	{
@@ -184,6 +184,7 @@ $(document).ready(function()
 		$('tr').has('div[id=additionalAreas]').next().find('textarea').val('Area: \nTarget Date: \nPlan: \n\nArea: \nTarget Date: \nPlan: \n\nArea: \nTarget Date: \nPlan: ');
 		$('tr').has('div[id=additionalAreas]').find('input').trigger('click');
 		$('tr').has('div[id=additionalAreas]').next().find('textarea').trigger('change');
+		resize($('tr').has('div[id=additionalAreas]').next().find('textarea')[0]);
 	}
 
 	$('.plans').keydown(function(e)
