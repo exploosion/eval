@@ -97,8 +97,7 @@ $(document).ready(function()
 			$('#area' + loopCount).hide();
 		}
 	}
-	
-	debugger;
+
 	if($('tr').has('div[id=autoGenerate]').next().find('textarea').val() == '')
 	{
 		$('tr').has('div[id=autoGenerate]').next().find('textarea').val('Above areas meeting/exceeding expectations');
