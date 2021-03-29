@@ -335,13 +335,17 @@ function customCallBack ()
 		if($('tr').has('input[id=' + this.name + ']').find('div[class=Q]').attr('type').includes('emp'))
 		{
 			empTotal = 0;
-			for(loopCount = 0; loopCount < $('tr').has('div[type*=emp]').find('input[name*=_calc]').length; loopCount++)
+			/*for(loopCount = 0; loopCount < $('tr').has('div[type*=emp]').find('input[name*=_calc]').length; loopCount++)
 			{
 				if($('tr').has('div[type*=emp]').find('input[name*=_calc]').eq(loopCount).val())
 				{
 					empTotal = parseInt(empTotal) + parseInt($('tr').has('div[type*=emp]').find('input[name*=_calc]').eq(loopCount).val());
 				}
-			}
+			}*/
+			$('tr').has('div[type*=emp]').find('input[name*=_calc]').each(function()
+			{
+				empTotal += parseInt($(this).val());
+			});
 			empScore = (parseInt(empTotal) / parseInt($('tr').has('div[type*=emp]').find('input[name*=_calc]').length)).toFixed(1);
 			$('tr').has('div[id=in1]').find('input').val(empScore + ' / 5');
 		}
