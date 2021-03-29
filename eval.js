@@ -145,7 +145,7 @@ $(document).ready(function()
 	//On page load set clinical scores if fields are filed in
 	$('tr').has('div[id=revenueScore]').find('input').val((($('tr').has('div[id=averageRevenue]').find('input').val() / $('tr').has('div[id=expectedRevenue]').find('input').val()).toFixed(1)) * 100 + '%');
 	$('tr').has('div[id=billableHoursScore]').find('input').val((($('tr').has('div[id=averageBillableHours]').find('input').val() / $('tr').has('div[id=expectedBillableHours]').find('input').val()).toFixed(1)) * 100 + '%');
-	$('tr').has('div[id=errorRateScore]').find('input').val($('tr').has('div[id=averageErrorRate]').find('input').val());
+	$('tr').has('div[id=errorRateScore]').find('input').val($('tr').has('div[id=averageErrorRate]').find('input').val() + '%');
 	if($('tr').has('div[id=averageErrorRate]').find('input').val() > $('tr').has('div[id=expectedErrorRate]').find('input').val())
 	{
 		$('tr').has('div[id=averageErrorRate]').find('input').css('color', 'red');
@@ -156,7 +156,7 @@ $(document).ready(function()
 		$('tr').has('div[id=averageErrorRate]').find('input').css('color', 'black');
 		$('tr').has('div[id=errorRateScore]').find('input').css('color', 'black');
 	}
-	$('tr').has('div[id=lateDocumentationRateScore]').find('input').val($('tr').has('div[id=averageLateDocumentationRate]').find('input').val());
+	$('tr').has('div[id=lateDocumentationRateScore]').find('input').val($('tr').has('div[id=averageLateDocumentationRate]').find('input').val() + '%');
 	if($('tr').has('div[id=averageLateDocumentationRate]').find('input').val() > $('tr').has('div[id=expectedLateDocumentationRate]').find('input').val())
 	{
 		$('tr').has('div[id=averageLateDocumentationRate]').find('input').css('color', 'red');
@@ -175,7 +175,7 @@ $(document).ready(function()
 		console.log('Yeet');
 		$('tr').has('div[id=revenueScore]').find('input').val((($('tr').has('div[id=averageRevenue]').find('input').val() / $('tr').has('div[id=expectedRevenue]').find('input').val()).toFixed(1)) * 100 + '%');
 		$('tr').has('div[id=billableHoursScore]').find('input').val((($('tr').has('div[id=averageBillableHours]').find('input').val() / $('tr').has('div[id=expectedBillableHours]').find('input').val()).toFixed(1)) * 100 + '%');
-		$('tr').has('div[id=errorRateScore]').find('input').val($('tr').has('div[id=averageErrorRate]').find('input').val());
+		$('tr').has('div[id=errorRateScore]').find('input').val($('tr').has('div[id=averageErrorRate]').find('input').val() + '%');
 		if($('tr').has('div[id=averageErrorRate]').find('input').val() > $('tr').has('div[id=expectedErrorRate]').find('input').val())
 		{
 			$('tr').has('div[id=averageErrorRate]').find('input').css('color', 'red');
@@ -186,7 +186,7 @@ $(document).ready(function()
 			$('tr').has('div[id=averageErrorRate]').find('input').css('color', 'black');
 			$('tr').has('div[id=errorRateScore]').find('input').css('color', 'black');
 		}
-		$('tr').has('div[id=lateDocumentationRateScore]').find('input').val($('tr').has('div[id=averageLateDocumentationRate]').find('input').val());
+		$('tr').has('div[id=lateDocumentationRateScore]').find('input').val($('tr').has('div[id=averageLateDocumentationRate]').find('input').val() + '%');
 		if($('tr').has('div[id=averageLateDocumentationRate]').find('input').val() > $('tr').has('div[id=expectedLateDocumentationRate]').find('input').val())
 		{
 			$('tr').has('div[id=averageLateDocumentationRate]').find('input').css('color', 'red');
