@@ -126,7 +126,26 @@ $(document).ready(function()
 	$('u').contents().unwrap();
 	$('input[name=Complete]').prop('disabled', false);
 	$('tr').has('div[class*=uneditable]').find('input').prop('readonly', true);
-	
+
+	$('tr').has('div[id=expectedErrorRate]').find('input').val('5.0%');
+	$('tr').has('div[id=expectedLateDocumentationRate]').find('input').val('5.0%');
+
+	$('tr').has('div[id=revenueScore]').find('input').val((averageRevenue / expectedRevenue).toFixed(1));
+	$('tr').has('div[id=billableHoursScore]').find('input').val((averageHours / expectedHours).toFixed(1));
+	$('tr').has('div[id=errorRateScore]').find('input').val((averageErrorRate / expectedErrorRate).toFixed(1));
+	$('tr').has('div[id=lateDocumentationRateScore]').find('input').val((averageLateDocumentationRate / expectedLateDocumentationRate).toFixed(1));
+	$('tr').has('div[id=customMetricScore]').find('input').val((averageCustomMetric / expectedCustomMetric).toFixed(1));
+	$('tr').has('div[class=calc]').change(function()
+	{
+		console.log('Yeet');
+		//test
+		$('tr').has('div[id=revenueScore]').find('input').val((averageRevenue / expectedRevenue).toFixed(1));
+		$('tr').has('div[id=billableHoursScore]').find('input').val((averageHours / expectedHours).toFixed(1));
+		$('tr').has('div[id=errorRateScore]').find('input').val((averageErrorRate / expectedErrorRate).toFixed(1));
+		$('tr').has('div[id=lateDocumentationRateScore]').find('input').val((averageLateDocumentationRate / expectedLateDocumentationRate).toFixed(1));
+		$('tr').has('div[id=customMetricScore]').find('input').val((averageCustomMetric / expectedCustomMetric).toFixed(1));
+	});
+
 	empTotal = 0;
 	for(loopCount = 0; loopCount < $('tr').has('div[type*=emp]').find('input[name*=_calc]').length; loopCount++)
 	{
