@@ -8,6 +8,12 @@ var qArray;
 var tempArray;
 var requireImprovement;
 var split;
+var empTotal;
+var empScore;
+var proTotal;
+var proScore;
+var supTotal;
+var supScore;
 
 function resize (x)
 {
@@ -119,6 +125,7 @@ $(document).ready(function()
 	$('td').has('div[id=victim]').hide();
 	$('u').contents().unwrap();
 	$('input[name=Complete]').prop('disabled', false);
+	$('tr').has('div[class*=uneditable]').find('input').prop('readonly', true);
 	
 	if($('tr').has('div[id=autoGenerate]').find('input').prop('checked') == false)
 	{
@@ -127,6 +134,7 @@ $(document).ready(function()
 	
 	$('tr').has('div[class=Q]').find('input').click(function()
 	{
+		debugger;
 		index = $.inArray($('tr').has('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').find('div').html(), qArray);
 		qObject[index].val = $('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').val();
 		
@@ -173,6 +181,39 @@ $(document).ready(function()
 		}
 		$('tr').has('div[id=autoGenerate]').next().find('textarea').trigger('change');
 		setTimeout(resize($('tr').has('div[id=autoGenerate]').next().find('textarea')[0]), 0);
+
+		empTotal = 0;
+		for(loopCount = 0; loopCount < $('tr').has('div[type*=emp]').find('input[name*=_calc]').length; loopCount++)
+		{
+			if($('tr').has('div[type*=emp]').find('input[name*=_calc]').eq(loopCount).val())
+			{
+				empTotal = empTotal + $('tr').has('div[type*=emp]').find('input[name*=_calc]').eq(loopCount).val();
+			}
+		}
+		empScore = (empTotal / $('tr').has('div[type*=emp]').find('input[name*=_calc]').length).toFixed(1);
+		$('tr').has('div[id=in1]').find('input').val(empScore);
+
+		proTotal = 0;
+		for(loopCount = 0; loopCount < $('tr').has('div[type*=pro]').find('input[name*=_calc]').length; loopCount++)
+		{
+			if($('tr').has('div[type*=pro]').find('input[name*=_calc]').eq(loopCount).val())
+			{
+				proTotal = proTotal + $('tr').has('div[type*=pro]').find('input[name*=_calc]').eq(loopCount).val();
+			}
+		}
+		proTotal = (proTotal / $('tr').has('div[type*=pro]').find('input[name*=_calc]').length).toFixed(1);
+		$('tr').has('div[id=in2]').find('input').val(proTotal);
+
+		supTotal = 0;
+		for(loopCount = 0; loopCount < $('tr').has('div[type*=sup]').find('input[name*=_calc]').length; loopCount++)
+		{
+			if($('tr').has('div[type*=sup]').find('input[name*=_calc]').eq(loopCount).val())
+			{
+				supTotal = supTotal + $('tr').has('div[type*=sup]').find('input[name*=_calc]').eq(loopCount).val();
+			}
+		}
+		supTotal = (supTotal / $('tr').has('div[type*=sup]').find('input[name*=_calc]').length).toFixed(1);
+		$('tr').has('div[id=in3]').find('input').val(supTotal);
 	});
 	
 	$('input[name=Complete]').click(function()
