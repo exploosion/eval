@@ -211,6 +211,7 @@ $(document).ready(function()
 		
 		if($('tr').has('input[id=' + this.name + ']').find('div[class=Q]').attr('type').includes('sup'))
 		{
+			debugger;
 			supTotal = 0;
 			for(loopCount = 0; loopCount < $('tr').has('div[type*=sup]').find('input[name*=_calc]').length; loopCount++)
 			{
