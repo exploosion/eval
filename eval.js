@@ -339,7 +339,6 @@ function customCallBack ()
 			{
 				empTotal = parseInt(empTotal) + parseInt($('tr').has('div[type*=emp]').find('input[name*=_calc]').eq(loopCount).val());
 			}
-			}
 			empScore = (parseInt(empTotal) / parseInt($('tr').has('div[type*=emp]').find('input[name*=_calc]').length)).toFixed(1);
 			$('tr').has('div[id=in1]').find('input').val(empScore + ' / 5');
 		}
