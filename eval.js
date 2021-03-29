@@ -188,10 +188,10 @@ $(document).ready(function()
 			{
 				if($('tr').has('div[type*=emp]').find('input[name*=_calc]').eq(loopCount).val())
 				{
-					empTotal = empTotal + $('tr').has('div[type*=emp]').find('input[name*=_calc]').eq(loopCount).val();
+					empTotal = parseInt(empTotal) + parseInt($('tr').has('div[type*=emp]').find('input[name*=_calc]').eq(loopCount).val());
 				}
 			}
-			empScore = (empTotal / $('tr').has('div[type*=emp]').find('input[name*=_calc]').length).toFixed(1);
+			empScore = (parseInt(empTotal) / parseInt($('tr').has('div[type*=emp]').find('input[name*=_calc]').length)).toFixed(1);
 			$('tr').has('div[id=in1]').find('input').val(empScore);
 		}
 
@@ -202,10 +202,10 @@ $(document).ready(function()
 			{
 				if($('tr').has('div[type*=pro]').find('input[name*=_calc]').eq(loopCount).val())
 				{
-					proTotal = proTotal + $('tr').has('div[type*=pro]').find('input[name*=_calc]').eq(loopCount).val();
+					proTotal = parseInt(proTotal) + parseInt($('tr').has('div[type*=pro]').find('input[name*=_calc]').eq(loopCount).val());
 				}
 			}
-			proTotal = (proTotal / $('tr').has('div[type*=pro]').find('input[name*=_calc]').length).toFixed(1);
+			proTotal = (parseInt(proTotal) / parseInt($('tr').has('div[type*=pro]').find('input[name*=_calc]').length)).toFixed(1);
 			$('tr').has('div[id=in2]').find('input').val(proTotal);
 		}
 		
@@ -216,10 +216,10 @@ $(document).ready(function()
 			{
 				if($('tr').has('div[type*=sup]').find('input[name*=_calc]').eq(loopCount).val())
 				{
-					supTotal = supTotal + $('tr').has('div[type*=sup]').find('input[name*=_calc]').eq(loopCount).val();
+					supTotal = parseInt(supTotal) + parseInt($('tr').has('div[type*=sup]').find('input[name*=_calc]').eq(loopCount).val());
 				}
 			}
-			supTotal = (supTotal / $('tr').has('div[type*=sup]').find('input[name*=_calc]').length).toFixed(1);
+			supTotal = (parseInt(supTotal) / parseInt($('tr').has('div[type*=sup]').find('input[name*=_calc]').length)).toFixed(1);
 			$('tr').has('div[id=in3]').find('input').val(supTotal);
 		}
 	});
