@@ -256,30 +256,21 @@ function customCallBack ()
 	empTotal = 0;
 	for(loopCount = 0; loopCount < $('tr').has('div[type*=emp]').find('input[name*=_calc]').length; loopCount++)
 	{
-		if($('tr').has('div[type*=emp]').find('input[name*=_calc]').eq(loopCount).val())
-		{
-			empTotal = parseInt(empTotal) + parseInt($('tr').has('div[type*=emp]').find('input[name*=_calc]').eq(loopCount).val());
-		}
+		empTotal = parseInt(empTotal) + parseInt($('tr').has('div[type*=emp]').find('input[name*=_calc]').eq(loopCount).val());
 	}
 	empScore = (parseInt(empTotal) / parseInt($('tr').has('div[type*=emp]').find('input[name*=_calc]').length)).toFixed(1);
 	$('tr').has('div[id=in1]').find('input').val(empScore + ' / 5');
 	proTotal = 0;
 	for(loopCount = 0; loopCount < $('tr').has('div[type*=pro]').find('input[name*=_calc]').length; loopCount++)
 	{
-		if($('tr').has('div[type*=pro]').find('input[name*=_calc]').eq(loopCount).val())
-		{
-			proTotal = parseInt(proTotal) + parseInt($('tr').has('div[type*=pro]').find('input[name*=_calc]').eq(loopCount).val());
-		}
+		proTotal = parseInt(proTotal) + parseInt($('tr').has('div[type*=pro]').find('input[name*=_calc]').eq(loopCount).val());
 	}
 	proTotal = (parseInt(proTotal) / parseInt($('tr').has('div[type*=pro]').find('input[name*=_calc]').length)).toFixed(1);
 	$('tr').has('div[id=in2]').find('input').val(proTotal + ' / 5');
 	supTotal = 0;
 	for(loopCount = 0; loopCount < $('tr').has('div[type=sup]').find('input[name*=_calc]').length; loopCount++)
 	{
-		if($('tr').has('div[type=sup]').find('input[name*=_calc]').eq(loopCount).val())
-		{
-			supTotal = parseInt(supTotal) + parseInt($('tr').has('div[type*=sup]').find('input[name*=_calc]').eq(loopCount).val());
-		}
+		supTotal = parseInt(supTotal) + parseInt($('tr').has('div[type*=sup]').find('input[name*=_calc]').eq(loopCount).val());
 	}
 	supTotal = (parseInt(supTotal) / parseInt($('tr').has('div[type=sup]').find('input[name*=_calc]').length)).toFixed(1);
 	$('tr').has('div[id=in3]').find('input').val(supTotal + ' / 5');
@@ -339,8 +330,51 @@ function customCallBack ()
 		}
 		$('tr').has('div[id=autoGenerate]').next().find('textarea').trigger('change');
 		setTimeout(resize($('tr').has('div[id=autoGenerate]').next().find('textarea')[0]), 0);
-				
-		//Calcuate evaluation scores each time questions are clicked
+	});
+
+	//Calcuate evaluation scores when score fields come into focus
+	$('tr').has('div[type=answer]').find('input').focus(function()
+	{
+		
+		if($('tr').has('input[id=' + this.name + ']').find('div[class=Q]').attr('type').includes('emp'))
+		{
+			empTotal = 0;
+			for(loopCount = 0; loopCount < $('tr').has('div[type*=emp]').find('input[name*=_calc]').length; loopCount++)
+			{
+				empTotal = parseInt(empTotal) + parseInt($('tr').has('div[type*=emp]').find('input[name*=_calc]').eq(loopCount).val());
+			}
+			empScore = (parseInt(empTotal) / parseInt($('tr').has('div[type*=emp]').find('input[name*=_calc]').length)).toFixed(1);
+			$('tr').has('div[id=in1]').find('input').val(empScore + ' / 5');
+		}
+
+		if($('tr').has('input[id=' + this.name + ']').find('div[class=Q]').attr('type').includes('pro'))
+		{
+			proTotal = 0;
+			for(loopCount = 0; loopCount < $('tr').has('div[type*=pro]').find('input[name*=_calc]').length; loopCount++)
+			{
+				proTotal = parseInt(proTotal) + parseInt($('tr').has('div[type*=pro]').find('input[name*=_calc]').eq(loopCount).val());
+			}
+			proTotal = (parseInt(proTotal) / parseInt($('tr').has('div[type*=pro]').find('input[name*=_calc]').length)).toFixed(1);
+			$('tr').has('div[id=in2]').find('input').val(proTotal + ' / 5');
+		}
+
+		if($('tr').has('input[id=' + this.name + ']').find('div[class=Q]').attr('type') == 'sup')
+		{
+			supTotal = 0;
+
+			for(loopCount = 0; loopCount < $('tr').has('div[type=sup]').find('input[name*=_calc]').length; loopCount++)
+			{
+				supTotal = parseInt(supTotal) + parseInt($('tr').has('div[type*=sup]').find('input[name*=_calc]').eq(loopCount).val());
+			}
+			supTotal = (parseInt(supTotal) / parseInt($('tr').has('div[type=sup]').find('input[name*=_calc]').length)).toFixed(1);
+			$('tr').has('div[id=in3]').find('input').val(supTotal + ' / 5');
+		}
+	});
+
+	//Calcuate evaluation scores on form submit just in case
+	$('input[name=Complete]').click(function()
+	{
+		console.log('Final score calculation.');
 		if($('tr').has('input[id=' + this.name + ']').find('div[class=Q]').attr('type').includes('emp'))
 		{
 			empTotal = 0;
