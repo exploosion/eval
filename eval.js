@@ -134,7 +134,6 @@ $(document).ready(function()
 	
 	$('tr').has('div[class=Q]').find('input').click(function()
 	{
-		debugger;
 		index = $.inArray($('tr').has('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').find('div[class=Q]').html(), qArray);
 		qObject[index].val = $('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').val();
 		
@@ -184,7 +183,6 @@ $(document).ready(function()
 		
 		if($('tr').has('input[id=' + this.name + ']').find('div[class=Q]').attr('type') == 'sup')
 		{
-			debugger;
 			console.log('Atari');
 			supTotal = 0;
 
