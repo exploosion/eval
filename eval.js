@@ -134,6 +134,7 @@ $(document).ready(function()
 	
 	$('tr').has('div[class=Q]').find('input').click(function()
 	{
+		debugger;
 		index = $.inArray($('tr').has('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').find('div').html(), qArray);
 		qObject[index].val = $('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').val();
 		
@@ -209,7 +210,6 @@ $(document).ready(function()
 			$('tr').has('div[id=in2]').find('input').val(proTotal);
 		}
 		
-		debugger;
 		if($('tr').has('input[id=' + this.name + ']').find('div').eq(1).attr('type').includes('sup'))
 		{
 			supTotal = 0;
