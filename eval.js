@@ -333,7 +333,7 @@ function customCallBack ()
 	});
 
 	//Calcuate evaluation scores when score fields come into focus
-	$('tr').has('div[type=answer]').find('input').scroll(function()
+	$('tr').has('div[type=answer]').find('input').focusin(function()
 	{
 		empTotal = 0;
 		for(loopCount = 0; loopCount < $('tr').has('div[type*=emp]').find('input[name*=_calc]').length; loopCount++)
