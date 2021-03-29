@@ -342,9 +342,9 @@ function customCallBack ()
 					empTotal = parseInt(empTotal) + parseInt($('tr').has('div[type*=emp]').find('input[name*=_calc]').eq(loopCount).val());
 				}
 			}*/
+			debugger;
 			$('tr').has('div[type*=emp]').find('input[name*=_calc]').each(function()
 			{
-				debugger;
 				empTotal = parseInt(empTotal) + parseInt($('this').val());
 			});
 			debugger;
