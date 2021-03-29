@@ -134,7 +134,6 @@ $(document).ready(function()
 	
 	$('tr').has('div[class=Q]').find('input').click(function()
 	{
-		debugger;
 		index = $.inArray($('tr').has('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').find('div').html(), qArray);
 		qObject[index].val = $('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').val();
 		
@@ -182,7 +181,7 @@ $(document).ready(function()
 		$('tr').has('div[id=autoGenerate]').next().find('textarea').trigger('change');
 		setTimeout(resize($('tr').has('div[id=autoGenerate]').next().find('textarea')[0]), 0);
 
-		if($('tr').has('input[id=' + this.name + ']').find('div').attr('type').includes('emp'))
+		if($('tr').has('input[id=' + this.name + ']').find('div[class=Q]').attr('type').includes('emp'))
 		{
 			empTotal = 0;
 			for(loopCount = 0; loopCount < $('tr').has('div[type*=emp]').find('input[name*=_calc]').length; loopCount++)
@@ -196,7 +195,7 @@ $(document).ready(function()
 			$('tr').has('div[id=in1]').find('input').val(empScore);
 		}
 
-		if($('tr').has('input[id=' + this.name + ']').find('div').attr('type').includes('pro'))
+		if($('tr').has('input[id=' + this.name + ']').find('div[class=Q]').attr('type').includes('pro'))
 		{
 			proTotal = 0;
 			for(loopCount = 0; loopCount < $('tr').has('div[type*=pro]').find('input[name*=_calc]').length; loopCount++)
@@ -210,7 +209,7 @@ $(document).ready(function()
 			$('tr').has('div[id=in2]').find('input').val(proTotal);
 		}
 		
-		if($('tr').has('input[id=' + this.name + ']').find('div').eq(1).attr('type').includes('sup'))
+		if($('tr').has('input[id=' + this.name + ']').find('div[class=Q]').attr('type').includes('sup'))
 		{
 			supTotal = 0;
 			for(loopCount = 0; loopCount < $('tr').has('div[type*=sup]').find('input[name*=_calc]').length; loopCount++)
