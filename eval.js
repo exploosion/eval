@@ -209,7 +209,7 @@ $(document).ready(function()
 			$('tr').has('div[id=in2]').find('input').val(proTotal);
 		}
 		
-		if($('tr').has('input[id=' + this.name + ']').find('div').attr('type').includes('sup'))
+		if($('tr').has('input[id=' + this.name + ']').find('div').eq(1).attr('type').includes('sup'))
 		{
 			supTotal = 0;
 			for(loopCount = 0; loopCount < $('tr').has('div[type*=sup]').find('input[name*=_calc]').length; loopCount++)
