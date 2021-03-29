@@ -143,21 +143,21 @@ $(document).ready(function()
 	$('tr').has('div[id=expectedLateDocumentationRate]').find('input').val('5.0%');
 
 	//On page load set clinical scores if fields are filed in
-	$('tr').has('div[id=revenueScore]').find('input').val(($('tr').has('div[id=averageRevenue]').find('input').val() / $('tr').has('div[id=expectedRevenue]').find('input').val()).toFixed(1)%);
-	$('tr').has('div[id=billableHoursScore]').find('input').val(($('tr').has('div[id=averageBillableHours]').find('input').val() / $('tr').has('div[id=expectedBillableHours]').find('input').val()).toFixed(1)%);
-	$('tr').has('div[id=errorRateScore]').find('input').val(($('tr').has('div[id=averageErrorRate]').find('input').val() / $('tr').has('div[id=expectedErrorRate]').find('input').val()).toFixed(1)%);
-	$('tr').has('div[id=lateDocumentationRateScore]').find('input').val(($('tr').has('div[id=averageLateDocumentationRate]').find('input').val() / $('tr').has('div[id=expectedLateDocumentationRate]').find('input').val()).toFixed(1)%);
-	$('tr').has('div[id=customMetricScore]').find('input').val(($('tr').has('div[id=averageCustomMetric]').find('input').val() / $('tr').has('div[id=expectedCustomMetric]').find('input').val()).toFixed(1)%);
+	$('tr').has('div[id=revenueScore]').find('input').val(($('tr').has('div[id=averageRevenue]').find('input').val() / $('tr').has('div[id=expectedRevenue]').find('input').val()).toFixed(1) + '%');
+	$('tr').has('div[id=billableHoursScore]').find('input').val(($('tr').has('div[id=averageBillableHours]').find('input').val() / $('tr').has('div[id=expectedBillableHours]').find('input').val()).toFixed(1) + '%');
+	$('tr').has('div[id=errorRateScore]').find('input').val(($('tr').has('div[id=averageErrorRate]').find('input').val() / $('tr').has('div[id=expectedErrorRate]').find('input').val()).toFixed(1) + '%');
+	$('tr').has('div[id=lateDocumentationRateScore]').find('input').val(($('tr').has('div[id=averageLateDocumentationRate]').find('input').val() / $('tr').has('div[id=expectedLateDocumentationRate]').find('input').val()).toFixed(1) + '%');
+	$('tr').has('div[id=customMetricScore]').find('input').val(($('tr').has('div[id=averageCustomMetric]').find('input').val() / $('tr').has('div[id=expectedCustomMetric]').find('input').val()).toFixed(1) + '%');
 
 	//Event handler for calculating clinical fields and custom metric field
 	$('tr').has('div[class=calc]').change(function()
 	{
 		console.log('Yeet');
-		$('tr').has('div[id=revenueScore]').find('input').val(($('tr').has('div[id=averageRevenue]').find('input').val() / $('tr').has('div[id=expectedRevenue]').find('input').val()).toFixed(1)%);
-		$('tr').has('div[id=billableHoursScore]').find('input').val(($('tr').has('div[id=averageBillableHours]').find('input').val() / $('tr').has('div[id=expectedBillableHours]').find('input').val()).toFixed(1)%);
-		$('tr').has('div[id=errorRateScore]').find('input').val(($('tr').has('div[id=averageErrorRate]').find('input').val() / $('tr').has('div[id=expectedErrorRate]').find('input').val()).toFixed(1)%);
-		$('tr').has('div[id=lateDocumentationRateScore]').find('input').val(($('tr').has('div[id=averageLateDocumentationRate]').find('input').val() / $('tr').has('div[id=expectedLateDocumentationRate]').find('input').val()).toFixed(1)%);
-		$('tr').has('div[id=customMetricScore]').find('input').val(($('tr').has('div[id=averageCustomMetric]').find('input').val() / $('tr').has('div[id=expectedCustomMetric]').find('input').val()).toFixed(1)%);
+		$('tr').has('div[id=revenueScore]').find('input').val(($('tr').has('div[id=averageRevenue]').find('input').val() / $('tr').has('div[id=expectedRevenue]').find('input').val()).toFixed(1) + '%');
+		$('tr').has('div[id=billableHoursScore]').find('input').val(($('tr').has('div[id=averageBillableHours]').find('input').val() / $('tr').has('div[id=expectedBillableHours]').find('input').val()).toFixed(1) + '%');
+		$('tr').has('div[id=errorRateScore]').find('input').val(($('tr').has('div[id=averageErrorRate]').find('input').val() / $('tr').has('div[id=expectedErrorRate]').find('input').val()).toFixed(1) + '%');
+		$('tr').has('div[id=lateDocumentationRateScore]').find('input').val(($('tr').has('div[id=averageLateDocumentationRate]').find('input').val() / $('tr').has('div[id=expectedLateDocumentationRate]').find('input').val()).toFixed(1) + '%');
+		$('tr').has('div[id=customMetricScore]').find('input').val(($('tr').has('div[id=averageCustomMetric]').find('input').val() / $('tr').has('div[id=expectedCustomMetric]').find('input').val()).toFixed(1) + '%');
 	});
 
 	//On page load, calculate evaluation scores
