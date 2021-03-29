@@ -131,7 +131,7 @@ $(document).ready(function()
 	$('tr').has('div[id=expectedLateDocumentationRate]').find('input').val('5.0%');
 
 	$('tr').has('div[id=revenueScore]').find('input').val((averageRevenue / expectedRevenue).toFixed(1));
-	$('tr').has('div[id=billableHoursScore]').find('input').val((averageHours / expectedHours).toFixed(1));
+	$('tr').has('div[id=billableHoursScore]').find('input').val((averageBillableHours / expectedBillableHours).toFixed(1));
 	$('tr').has('div[id=errorRateScore]').find('input').val((averageErrorRate / expectedErrorRate).toFixed(1));
 	$('tr').has('div[id=lateDocumentationRateScore]').find('input').val((averageLateDocumentationRate / expectedLateDocumentationRate).toFixed(1));
 	$('tr').has('div[id=customMetricScore]').find('input').val((averageCustomMetric / expectedCustomMetric).toFixed(1));
@@ -140,7 +140,7 @@ $(document).ready(function()
 		console.log('Yeet');
 		//test
 		$('tr').has('div[id=revenueScore]').find('input').val((averageRevenue / expectedRevenue).toFixed(1));
-		$('tr').has('div[id=billableHoursScore]').find('input').val((averageHours / expectedHours).toFixed(1));
+		$('tr').has('div[id=billableHoursScore]').find('input').val((averageBillableHours / expectedBillableHours).toFixed(1));
 		$('tr').has('div[id=errorRateScore]').find('input').val((averageErrorRate / expectedErrorRate).toFixed(1));
 		$('tr').has('div[id=lateDocumentationRateScore]').find('input').val((averageLateDocumentationRate / expectedLateDocumentationRate).toFixed(1));
 		$('tr').has('div[id=customMetricScore]').find('input').val((averageCustomMetric / expectedCustomMetric).toFixed(1));
