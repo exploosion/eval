@@ -15,6 +15,19 @@ var proScore;
 var supTotal;
 var supScore;
 
+//Function to prevent non digits and only allow one decimal in field
+function preventAlpha()
+{
+    var val = $(this).val();
+    if(isNaN(val))
+	{
+         val = val.replace(/[^0-9\.]/g,'');
+         if(val.split('.').length>2) 
+             val =val.replace(/\.+$/,"");
+    }
+    $(this).val(val); 
+}
+
 //Function to resize textareas
 function resize (x)
 {
@@ -22,8 +35,43 @@ function resize (x)
 	$(x).height(x.scrollHeight);	
 }
 
+function waitForElement (selector, callback, maxTimes = false)
+{
+	if (maxTimes != false)
+	{
+		maxTimes--;
+	}
+	console.log('Attempt');
+	if($(selector).length)
+	{
+		callback();
+		console.log('Finished');
+	}
+	else
+	{
+		if (maxTimes === false || maxTimes > 0)
+		{
+			setTimeout(function()
+			{
+				console.log('Waiting');
+				waitForElement(selector, callback, maxTimes);
+			}, 100);
+		}
+		else
+		{
+			console.log('Max attempts reached, giving up.');
+		}
+	}
+}
+
+function customCallBack ()
+{
+	console.log('It\'s here!');
+}
+
 $(document).ready(function()
 {
+	waitForElement('input[name=Complete]', customCallBack, 10);
 	length = $('div[class=Q]').length;
 	qObject = [length];
 	qArray = [length];
@@ -369,4 +417,7 @@ $(document).ready(function()
 			e.preventDefault();
 		}
 	});
+
+	//Event handle to prevent non numerics and only allow one decimal in clinical scores and Custome Metric values
+	$('tr').has('div[class=calc]').find('input').keyup(preventAlpha);
 });
