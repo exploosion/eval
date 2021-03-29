@@ -187,6 +187,17 @@ $(document).ready(function()
 			debugger;
 			console.log('Atari');
 			supTotal = 0;
+
+			
+			for(loopCount = 0; loopCount < $('tr').has('div[type=sup]').find('input[name*=_calc]').length; loopCount++)
+			{
+				if($('tr').has('div[type=sup]').find('input[name*=_calc]').eq(loopCount).val())
+				{
+					supTotal = parseInt(supTotal) + parseInt($('tr').has('div[type*=sup]').find('input[name*=_calc]').eq(loopCount).val());
+				}
+			}
+			supTotal = (parseInt(supTotal) / parseInt($('tr').has('div[type=sup]').find('input[name*=_calc]').length)).toFixed(1);
+			$('tr').has('div[id=in3]').find('input').val(supTotal);
 		}
 		else
 		{
