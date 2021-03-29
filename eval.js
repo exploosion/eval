@@ -127,6 +127,37 @@ $(document).ready(function()
 	$('input[name=Complete]').prop('disabled', false);
 	$('tr').has('div[class*=uneditable]').find('input').prop('readonly', true);
 	
+	empTotal = 0;
+	for(loopCount = 0; loopCount < $('tr').has('div[type*=emp]').find('input[name*=_calc]').length; loopCount++)
+	{
+		if($('tr').has('div[type*=emp]').find('input[name*=_calc]').eq(loopCount).val())
+		{
+			empTotal = parseInt(empTotal) + parseInt($('tr').has('div[type*=emp]').find('input[name*=_calc]').eq(loopCount).val());
+		}
+	}
+	empScore = (parseInt(empTotal) / parseInt($('tr').has('div[type*=emp]').find('input[name*=_calc]').length)).toFixed(1);
+	$('tr').has('div[id=in1]').find('input').val(empScore + ' / 5');
+	proTotal = 0;
+	for(loopCount = 0; loopCount < $('tr').has('div[type*=pro]').find('input[name*=_calc]').length; loopCount++)
+	{
+		if($('tr').has('div[type*=pro]').find('input[name*=_calc]').eq(loopCount).val())
+		{
+			proTotal = parseInt(proTotal) + parseInt($('tr').has('div[type*=pro]').find('input[name*=_calc]').eq(loopCount).val());
+		}
+	}
+	proTotal = (parseInt(proTotal) / parseInt($('tr').has('div[type*=pro]').find('input[name*=_calc]').length)).toFixed(1);
+	$('tr').has('div[id=in2]').find('input').val(proTotal + ' / 5');
+	supTotal = 0;
+	for(loopCount = 0; loopCount < $('tr').has('div[type=sup]').find('input[name*=_calc]').length; loopCount++)
+	{
+		if($('tr').has('div[type=sup]').find('input[name*=_calc]').eq(loopCount).val())
+		{
+			supTotal = parseInt(supTotal) + parseInt($('tr').has('div[type*=sup]').find('input[name*=_calc]').eq(loopCount).val());
+		}
+	}
+	supTotal = (parseInt(supTotal) / parseInt($('tr').has('div[type=sup]').find('input[name*=_calc]').length)).toFixed(1);
+	$('tr').has('div[id=in3]').find('input').val(supTotal + ' / 5');
+	
 	if($('tr').has('div[id=autoGenerate]').find('input').prop('checked') == false)
 	{
 		$('tr').has('div[id=autoGenerate]').find('input').trigger('click');
@@ -226,7 +257,7 @@ $(document).ready(function()
 			$('tr').has('div[id=in3]').find('input').val(supTotal + ' / 5');
 		}
 	});
-	
+
 	$('input[name=Complete]').click(function()
 	{
 		$('tr').has('div[id=victim]').next().find('textarea').val('');
