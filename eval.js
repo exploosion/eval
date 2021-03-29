@@ -67,11 +67,6 @@ function waitForElement (selector, callback, maxTimes = false)
 function customCallBack ()
 {
 	console.log('It\'s here!');
-}
-
-$(document).ready(function()
-{
-	waitForElement('input[name=Complete]', customCallBack, 10);
 	length = $('div[class=Q]').length;
 	qObject = [length];
 	qArray = [length];
@@ -420,4 +415,9 @@ $(document).ready(function()
 
 	//Event handle to prevent non numerics and only allow one decimal in clinical scores and Custome Metric values
 	$('tr').has('div[class=calc]').find('input').keyup(preventAlpha);
+}
+
+$(document).ready(function()
+{
+	waitForElement('input[name=Complete]', customCallBack, 10);
 });
