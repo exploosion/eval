@@ -134,7 +134,6 @@ $(document).ready(function()
 	
 	$('tr').has('div[class=Q]').find('input').click(function()
 	{
-		debugger;
 		index = $.inArray($('tr').has('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').find('div').html(), qArray);
 		qObject[index].val = $('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').val();
 		
