@@ -181,6 +181,15 @@ function customCallBack ()
 	$('input[name=Complete]').prop('disabled', false);
 	$('tr').has('div[class*=uneditable]').find('input').prop('readonly', true);
 
+	//Set all values to 0 on page load
+	$('input[name*=_calc]').each(function()
+	{
+		if(!$(this).val())
+		{
+			$(this).val('0');
+		}
+	});
+
 	//Setting default parameters for error and late documentaion rates
 	$('tr').has('div[id=expectedErrorRate]').find('input').val('5.0%');
 	$('tr').has('div[id=expectedLateDocumentationRate]').find('input').val('5.0%');
@@ -342,12 +351,10 @@ function customCallBack ()
 					empTotal = parseInt(empTotal) + parseInt($('tr').has('div[type*=emp]').find('input[name*=_calc]').eq(loopCount).val());
 				}
 			}*/
-			debugger;
 			$('tr').has('div[type*=emp]').find('input[name*=_calc]').each(function()
 			{
-				empTotal = parseInt(empTotal) + parseInt($('this').val());
+					empTotal = parseInt(empTotal) + parseInt($('this').val());
 			});
-			debugger;
 			empScore = (parseInt(empTotal) / parseInt($('tr').has('div[type*=emp]').find('input[name*=_calc]').length)).toFixed(1);
 			$('tr').has('div[id=in1]').find('input').val(empScore + ' / 5');
 		}
