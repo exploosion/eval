@@ -90,6 +90,10 @@ function customCallBack ()
 	for(loopCount = 0; loopCount < $('div[class=Q]').length; loopCount++)
 	{
 		qObject[loopCount] = {q:$('div[class=Q]').eq(loopCount).html(), date:'', plan:'', val:0, needed:false};
+		if($('input[name*=_calc]').eq(loopCount).val() && $('input[name*=_calc]').eq(loopCount).val() != '0')
+		{
+			qObject[loopCount].val = $('input[name*=_calc]').eq(loopCount).val();
+		}
 		qArray[loopCount] = qObject[loopCount].q;
 	}
 	
