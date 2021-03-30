@@ -71,6 +71,15 @@ function customCallBack ()
 	qObject = [length];
 	qArray = [length];
 	tempArray = [length];
+
+	//Set all answer values to 0 on page load
+	$('input[name*=_calc]').each(function()
+	{
+		if(!$(this).val())
+		{
+			$(this).val('0');
+		}
+	});
 	
 	//Events to drive textarea resizes
 	$('tr').has('div[id=autoGenerate]').next().find('textarea').change(function()
@@ -184,15 +193,6 @@ function customCallBack ()
 	$('u').contents().unwrap();
 	$('input[name=Complete]').prop('disabled', false);
 	$('tr').has('div[class*=uneditable]').find('input').prop('readonly', true);
-
-	//Set all values to 0 on page load
-	$('input[name*=_calc]').each(function()
-	{
-		if(!$(this).val())
-		{
-			$(this).val('0');
-		}
-	});
 
 	//Setting default parameters for error and late documentaion rates
 	$('tr').has('div[id=expectedErrorRate]').find('input').val('5.0%');
