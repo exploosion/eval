@@ -286,6 +286,11 @@ function customCallBack ()
 	{
 		index = $.inArray($('tr').has('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').find('div[class=Q]').html(), qArray);
 		
+		if(!$('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').val())
+		{
+			$('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').val('0');
+		}
+
 		//Calcuate evaluation scores each time questions are clicked
 		if($('tr').has('input[id=' + this.name + ']').find('div[class=Q]').attr('type').includes('emp'))
 		{
@@ -328,7 +333,6 @@ function customCallBack ()
 			$('#date' + index).prop('required', false);
 			$('#plan' + index).prop('required', false); 
 		}
-		console.log($.inArray($('tr').has('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').find('div[class=Q]').html(), qArray));
 		
 		requireImprovement = false;
 		$('tr').has('div[id=autoGenerate]').next().find('textarea').val('');
