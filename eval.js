@@ -228,7 +228,7 @@ function customCallBack ()
 		$('tr').has('div[id=revenueScore]').find('input').val((($('tr').has('div[id=averageRevenue]').find('input').val() / $('tr').has('div[id=expectedRevenue]').find('input').val()).toFixed(1)) * 100 + '%');
 		$('tr').has('div[id=billableHoursScore]').find('input').val((($('tr').has('div[id=averageBillableHours]').find('input').val() / $('tr').has('div[id=expectedBillableHours]').find('input').val()).toFixed(1)) * 100 + '%');
 		$('tr').has('div[id=errorRateScore]').find('input').val($('tr').has('div[id=averageErrorRate]').find('input').val() + '%');
-		if($('tr').has('div[id=averageErrorRate]').find('input').val() > $('tr').has('div[id=expectedErrorRate]').find('input').val())
+		if($('tr').has('div[id=averageErrorRate]').find('input').val() > $('tr').has('div[id=expectedErrorRate]').find('input').val().slice(0, $('tr').has('div[id=expectedErrorRate]').find('input').val().length - 1))
 		{
 			$('tr').has('div[id=averageErrorRate]').find('input').css('color', 'red');
 			$('tr').has('div[id=errorRateScore]').find('input').css('color', 'red');
@@ -239,7 +239,7 @@ function customCallBack ()
 			$('tr').has('div[id=errorRateScore]').find('input').css('color', 'black');
 		}
 		$('tr').has('div[id=lateDocumentationRateScore]').find('input').val($('tr').has('div[id=averageLateDocumentationRate]').find('input').val() + '%');
-		if($('tr').has('div[id=averageLateDocumentationRate]').find('input').val() > $('tr').has('div[id=expectedLateDocumentationRate]').find('input').val())
+		if($('tr').has('div[id=averageLateDocumentationRate]').find('input').val() > $('tr').has('div[id=expectedLateDocumentationRate]').find('input').val().slice(0, $('tr').has('div[id=expectedLateDocumentationRate]').find('input').val().length - 1))
 		{
 			$('tr').has('div[id=averageLateDocumentationRate]').find('input').css('color', 'red');
 			$('tr').has('div[id=lateDocumentationRateScore]').find('input').css('color', 'red');
@@ -394,62 +394,6 @@ function customCallBack ()
 
 	});
 
-	/*//Calcuate evaluation scores when score fields come into focus
-	$('tr').has('div[type=answer]').find('input').focusin(function()
-	{
-		empTotal = 0;
-		for(loopCount = 0; loopCount < $('tr').has('div[type*=emp]').find('input[name*=_calc]').length; loopCount++)
-		{
-			empTotal = parseInt(empTotal) + parseInt($('tr').has('div[type*=emp]').find('input[name*=_calc]').eq(loopCount).val());
-		}
-		empScore = (parseInt(empTotal) / parseInt($('tr').has('div[type*=emp]').find('input[name*=_calc]').length)).toFixed(1);
-		$('tr').has('div[id=in1]').find('input').val(empScore + ' / 5');
-		proTotal = 0;
-		for(loopCount = 0; loopCount < $('tr').has('div[type*=pro]').find('input[name*=_calc]').length; loopCount++)
-		{
-			proTotal = parseInt(proTotal) + parseInt($('tr').has('div[type*=pro]').find('input[name*=_calc]').eq(loopCount).val());
-		}
-		proTotal = (parseInt(proTotal) / parseInt($('tr').has('div[type*=pro]').find('input[name*=_calc]').length)).toFixed(1);
-		$('tr').has('div[id=in2]').find('input').val(proTotal + ' / 5');
-
-		supTotal = 0;
-		for(loopCount = 0; loopCount < $('tr').has('div[type=sup]').find('input[name*=_calc]').length; loopCount++)
-		{
-			supTotal = parseInt(supTotal) + parseInt($('tr').has('div[type*=sup]').find('input[name*=_calc]').eq(loopCount).val());
-		}
-		supTotal = (parseInt(supTotal) / parseInt($('tr').has('div[type=sup]').find('input[name*=_calc]').length)).toFixed(1);
-		$('tr').has('div[id=in3]').find('input').val(supTotal + ' / 5');
-	});
-
-	//Calcuate evaluation scores on form submit just in case
-	$('input[name=Complete]').click(function()
-	{
-		console.log('Final score calculation.');
-
-		empTotal = 0;
-		for(loopCount = 0; loopCount < $('tr').has('div[type*=emp]').find('input[name*=_calc]').length; loopCount++)
-		{
-			empTotal = parseInt(empTotal) + parseInt($('tr').has('div[type*=emp]').find('input[name*=_calc]').eq(loopCount).val());
-		}
-		empScore = (parseInt(empTotal) / parseInt($('tr').has('div[type*=emp]').find('input[name*=_calc]').length)).toFixed(1);
-		$('tr').has('div[id=in1]').find('input').val(empScore + ' / 5');
-		proTotal = 0;
-		for(loopCount = 0; loopCount < $('tr').has('div[type*=pro]').find('input[name*=_calc]').length; loopCount++)
-		{
-			proTotal = parseInt(proTotal) + parseInt($('tr').has('div[type*=pro]').find('input[name*=_calc]').eq(loopCount).val());
-		}
-		proTotal = (parseInt(proTotal) / parseInt($('tr').has('div[type*=pro]').find('input[name*=_calc]').length)).toFixed(1);
-		$('tr').has('div[id=in2]').find('input').val(proTotal + ' / 5');
-
-		supTotal = 0;
-		for(loopCount = 0; loopCount < $('tr').has('div[type=sup]').find('input[name*=_calc]').length; loopCount++)
-		{
-			supTotal = parseInt(supTotal) + parseInt($('tr').has('div[type*=sup]').find('input[name*=_calc]').eq(loopCount).val());
-		}
-		supTotal = (parseInt(supTotal) / parseInt($('tr').has('div[type=sup]').find('input[name*=_calc]').length)).toFixed(1);
-		$('tr').has('div[id=in3]').find('input').val(supTotal + ' / 5');
-	});*/
-
 	//Load values from qArray into Improvement Plan on page submit
 	$('input[name=Complete]').click(function()
 	{
@@ -473,9 +417,9 @@ function customCallBack ()
 	{
 		$('tr').has('div[id=additionalAreas]').next().find('textarea').val('Area: \nTarget Date: \nPlan: \n\nArea: \nTarget Date: \nPlan: \n\nArea: \nTarget Date: \nPlan: ');
 		$('tr').has('div[id=additionalAreas]').find('input').trigger('click');
-		$('tr').has('div[id=additionalAreas]').next().find('textarea').trigger('change');
-		setTimeout(resize($('tr').has('div[id=additionalAreas]').next().find('textarea')[0]), 0);
 	}
+	$('tr').has('div[id=additionalAreas]').next().find('textarea').trigger('change');
+	setTimeout(resize($('tr').has('div[id=additionalAreas]').next().find('textarea')[0]), 0);
 
 	//Prevent use of new line in temp Improvement Plan text areas
 	$('.plans').keydown(function(e)
@@ -494,3 +438,6 @@ $(document).ready(function()
 {
 	waitForElement('input[name=Complete]', customCallBack, 10);
 });
+
+//Highlighting Professionalism questions
+//$('tr').find('div[type*=pro]').css('color', 'blue');
