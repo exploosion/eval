@@ -11,9 +11,9 @@ var split;
 var empTotal = 0;
 var empScore = 0;
 var proTotal = 0;
-var proScore = 0;
-var supTotal = 0;
-var supScore = 0;
+var proScore = 0.0;
+var supTotal = 0.0;
+var supScore = 0.0;
 
 //Function to prevent non digits and only allow one decimal in field
 function preventAlpha()
@@ -198,7 +198,7 @@ function customCallBack ()
 	$('tr').has('div[id=revenueScore]').find('input').val((($('tr').has('div[id=averageRevenue]').find('input').val() / $('tr').has('div[id=expectedRevenue]').find('input').val()).toFixed(1)) * 100 + '%');
 	$('tr').has('div[id=billableHoursScore]').find('input').val((($('tr').has('div[id=averageBillableHours]').find('input').val() / $('tr').has('div[id=expectedBillableHours]').find('input').val()).toFixed(1)) * 100 + '%');
 	$('tr').has('div[id=errorRateScore]').find('input').val($('tr').has('div[id=averageErrorRate]').find('input').val() + '%');
-	if($('tr').has('div[id=averageErrorRate]').find('input').val() > $('tr').has('div[id=expectedErrorRate]').find('input').val())
+	if($('tr').has('div[id=averageErrorRate]').find('input').val() > $('tr').has('div[id=expectedErrorRate]').find('input').val().slice(0, $('tr').has('div[id=expectedErrorRate]').find('input').val().length - 1))
 	{
 		$('tr').has('div[id=averageErrorRate]').find('input').css('color', 'red');
 		$('tr').has('div[id=errorRateScore]').find('input').css('color', 'red');
@@ -209,7 +209,7 @@ function customCallBack ()
 		$('tr').has('div[id=errorRateScore]').find('input').css('color', 'black');
 	}
 	$('tr').has('div[id=lateDocumentationRateScore]').find('input').val($('tr').has('div[id=averageLateDocumentationRate]').find('input').val() + '%');
-	if($('tr').has('div[id=averageLateDocumentationRate]').find('input').val() > $('tr').has('div[id=expectedLateDocumentationRate]').find('input').val())
+	if($('tr').has('div[id=averageLateDocumentationRate]').find('input').val() > $('tr').has('div[id=expectedLateDocumentationRate]').find('input').val().slice(0, $('tr').has('div[id=expectedLateDocumentationRate]').find('input').val().length - 1))
 	{
 		$('tr').has('div[id=averageLateDocumentationRate]').find('input').css('color', 'red');
 		$('tr').has('div[id=lateDocumentationRateScore]').find('input').css('color', 'red');
@@ -302,13 +302,13 @@ function customCallBack ()
 		{
 			proTotal = (parseInt(proTotal)) + (parseInt($('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').val()) - parseInt(qObject[index].val));
 			proScore = (parseInt(proTotal) / parseInt($('tr').has('div[type*=pro]').find('input[name*=_calc]').length)).toFixed(1);
-			$('tr').has('div[id=in2]').find('input').val(proTotal + ' / 5');
+			$('tr').has('div[id=in2]').find('input').val(proScore + ' / 5');
 		}
 		if($('tr').has('input[id=' + this.name + ']').find('div[class=Q]').attr('type') == 'sup')
 		{
 			supTotal = (parseInt(supTotal)) + (parseInt($('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').val()) - parseInt(qObject[index].val));
 			supScore = (parseInt(supTotal) / parseInt($('tr').has('div[type=sup]').find('input[name*=_calc]').length)).toFixed(1);
-			$('tr').has('div[id=in3]').find('input').val(supTotal + ' / 5');
+			$('tr').has('div[id=in3]').find('input').val(supScore + ' / 5');
 		}
 
 		qObject[index].val = $('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').val();
