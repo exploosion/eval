@@ -198,7 +198,7 @@ function customCallBack ()
 	$('tr').has('div[id=revenueScore]').find('input').val((($('tr').has('div[id=averageRevenue]').find('input').val() / $('tr').has('div[id=expectedRevenue]').find('input').val()).toFixed(1)) * 100 + '%');
 	$('tr').has('div[id=billableHoursScore]').find('input').val((($('tr').has('div[id=averageBillableHours]').find('input').val() / $('tr').has('div[id=expectedBillableHours]').find('input').val()).toFixed(1)) * 100 + '%');
 	$('tr').has('div[id=errorRateScore]').find('input').val($('tr').has('div[id=averageErrorRate]').find('input').val() + '%');
-	if($('tr').has('div[id=averageErrorRate]').find('input').val() > $('tr').has('div[id=expectedErrorRate]').find('input').val().slice(0, $('tr').has('div[id=expectedErrorRate]').find('input').val().length - 1))
+	if(parseFloat($('tr').has('div[id=averageErrorRate]').find('input').val()) > parseFloat($('tr').has('div[id=expectedErrorRate]').find('input').val().slice(0, $('tr').has('div[id=expectedErrorRate]').find('input').val().length - 1)))
 	{
 		$('tr').has('div[id=averageErrorRate]').find('input').css('color', 'red');
 		$('tr').has('div[id=errorRateScore]').find('input').css('color', 'red');
@@ -209,7 +209,7 @@ function customCallBack ()
 		$('tr').has('div[id=errorRateScore]').find('input').css('color', 'black');
 	}
 	$('tr').has('div[id=lateDocumentationRateScore]').find('input').val($('tr').has('div[id=averageLateDocumentationRate]').find('input').val() + '%');
-	if($('tr').has('div[id=averageLateDocumentationRate]').find('input').val() > $('tr').has('div[id=expectedLateDocumentationRate]').find('input').val().slice(0, $('tr').has('div[id=expectedLateDocumentationRate]').find('input').val().length - 1))
+	if(parseFloat($('tr').has('div[id=averageLateDocumentationRate]').find('input').val()) > parseFloat($('tr').has('div[id=expectedLateDocumentationRate]').find('input').val().slice(0, $('tr').has('div[id=expectedLateDocumentationRate]').find('input').val().length - 1)))
 	{
 		$('tr').has('div[id=averageLateDocumentationRate]').find('input').css('color', 'red');
 		$('tr').has('div[id=lateDocumentationRateScore]').find('input').css('color', 'red');
@@ -228,7 +228,7 @@ function customCallBack ()
 		$('tr').has('div[id=revenueScore]').find('input').val((($('tr').has('div[id=averageRevenue]').find('input').val() / $('tr').has('div[id=expectedRevenue]').find('input').val()).toFixed(1)) * 100 + '%');
 		$('tr').has('div[id=billableHoursScore]').find('input').val((($('tr').has('div[id=averageBillableHours]').find('input').val() / $('tr').has('div[id=expectedBillableHours]').find('input').val()).toFixed(1)) * 100 + '%');
 		$('tr').has('div[id=errorRateScore]').find('input').val($('tr').has('div[id=averageErrorRate]').find('input').val() + '%');
-		if($('tr').has('div[id=averageErrorRate]').find('input').val() > $('tr').has('div[id=expectedErrorRate]').find('input').val().slice(0, $('tr').has('div[id=expectedErrorRate]').find('input').val().length - 1))
+		if(parseFloat($('tr').has('div[id=averageErrorRate]').find('input').val()) > parseFloat($('tr').has('div[id=expectedErrorRate]').find('input').val().slice(0, $('tr').has('div[id=expectedErrorRate]').find('input').val().length - 1)))
 		{
 			$('tr').has('div[id=averageErrorRate]').find('input').css('color', 'red');
 			$('tr').has('div[id=errorRateScore]').find('input').css('color', 'red');
@@ -239,7 +239,7 @@ function customCallBack ()
 			$('tr').has('div[id=errorRateScore]').find('input').css('color', 'black');
 		}
 		$('tr').has('div[id=lateDocumentationRateScore]').find('input').val($('tr').has('div[id=averageLateDocumentationRate]').find('input').val() + '%');
-		if($('tr').has('div[id=averageLateDocumentationRate]').find('input').val() > $('tr').has('div[id=expectedLateDocumentationRate]').find('input').val().slice(0, $('tr').has('div[id=expectedLateDocumentationRate]').find('input').val().length - 1))
+		if(parseFloat($('tr').has('div[id=averageLateDocumentationRate]').find('input').val()) > parseFloat($('tr').has('div[id=expectedLateDocumentationRate]').find('input').val().slice(0, $('tr').has('div[id=expectedLateDocumentationRate]').find('input').val().length - 1)))
 		{
 			$('tr').has('div[id=averageLateDocumentationRate]').find('input').css('color', 'red');
 			$('tr').has('div[id=lateDocumentationRateScore]').find('input').css('color', 'red');
