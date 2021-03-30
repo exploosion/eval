@@ -265,15 +265,15 @@ function customCallBack ()
 	{
 		proTotal = parseInt(proTotal) + parseInt($('tr').has('div[type*=pro]').find('input[name*=_calc]').eq(loopCount).val());
 	}
-	proTotal = (parseInt(proTotal) / parseInt($('tr').has('div[type*=pro]').find('input[name*=_calc]').length)).toFixed(1);
-	$('tr').has('div[id=in2]').find('input').val(proTotal + ' / 5');
+	proScore = (parseInt(proTotal) / parseInt($('tr').has('div[type*=pro]').find('input[name*=_calc]').length)).toFixed(1);
+	$('tr').has('div[id=in2]').find('input').val(proScore + ' / 5');
 	supTotal = 0;
 	for(loopCount = 0; loopCount < $('tr').has('div[type=sup]').find('input[name*=_calc]').length; loopCount++)
 	{
 		supTotal = parseInt(supTotal) + parseInt($('tr').has('div[type*=sup]').find('input[name*=_calc]').eq(loopCount).val());
 	}
-	supTotal = (parseInt(supTotal) / parseInt($('tr').has('div[type=sup]').find('input[name*=_calc]').length)).toFixed(1);
-	$('tr').has('div[id=in3]').find('input').val(supTotal + ' / 5');
+	supScore = (parseInt(supTotal) / parseInt($('tr').has('div[type=sup]').find('input[name*=_calc]').length)).toFixed(1);
+	$('tr').has('div[id=in3]').find('input').val(supScore + ' / 5');
 	
 	//Expanding Areas Requiring Improvment textarea on page load
 	if($('tr').has('div[id=autoGenerate]').find('input').prop('checked') == false)
@@ -291,7 +291,7 @@ function customCallBack ()
 			$('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').val('0');
 		}
 
-		//Calcuate evaluation scores each time questions are clicked
+		//Calcuate evaluation scores each time questions are clicked before loading the value into qObject so we can add or subtract from total scores first
 		if($('tr').has('input[id=' + this.name + ']').find('div[class=Q]').attr('type').includes('emp'))
 		{
 			empTotal = (parseInt(empTotal)) + (parseInt($('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').val()) - parseInt(qObject[index].val));
@@ -311,8 +311,8 @@ function customCallBack ()
 			$('tr').has('div[id=in3]').find('input').val(supScore + ' / 5');
 		}
 
+		//Setting value of clicked answer into it's spot in qObject
 		qObject[index].val = $('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').val();
-		
 		
 
 		if(qObject[index].val > 0 && qObject[index].val < 3)
