@@ -8,12 +8,12 @@ var qArray;
 var tempArray;
 var requireImprovement;
 var split;
-var empTotal;
-var empScore;
-var proTotal;
-var proScore;
-var supTotal;
-var supScore;
+var empTotal = 0;
+var empScore = 0;
+var proTotal = 0;
+var proScore = 0;
+var supTotal = 0;
+var supScore = 0;
 
 //Function to prevent non digits and only allow one decimal in field
 function preventAlpha()
@@ -287,6 +287,8 @@ function customCallBack ()
 		index = $.inArray($('tr').has('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').find('div[class=Q]').html(), qArray);
 		qObject[index].val = $('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').val();
 		
+		debugger;
+
 		if(qObject[index].val > 0 && qObject[index].val < 3)
 		{
 			qObject[index].needed = true;
@@ -331,7 +333,8 @@ function customCallBack ()
 		$('tr').has('div[id=autoGenerate]').next().find('textarea').trigger('change');
 		setTimeout(resize($('tr').has('div[id=autoGenerate]').next().find('textarea')[0]), 0);
 
-		//Calcuate evaluation scores each time questions are clicked
+		//Trying Something new, restore the following block if does not work
+		/*//Calcuate evaluation scores each time questions are clicked
 		if($('tr').has('input[id=' + this.name + ']').find('div[class=Q]').attr('type').includes('emp'))
 		{
 			empTotal = 0;
@@ -362,7 +365,8 @@ function customCallBack ()
 			}
 			supTotal = (parseInt(supTotal) / parseInt($('tr').has('div[type=sup]').find('input[name*=_calc]').length)).toFixed(1);
 			$('tr').has('div[id=in3]').find('input').val(supTotal + ' / 5');
-		}
+		}*/
+
 	});
 
 	/*//Calcuate evaluation scores when score fields come into focus
