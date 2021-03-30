@@ -305,8 +305,6 @@ function customCallBack ()
 			supScore = (parseInt(supTotal) / parseInt($('tr').has('div[type=sup]').find('input[name*=_calc]').length)).toFixed(1);
 			$('tr').has('div[id=in3]').find('input').val(supTotal + ' / 5');
 		}
-		
-		debugger;
 
 		qObject[index].val = $('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').val();
 		
@@ -330,7 +328,7 @@ function customCallBack ()
 			$('#date' + index).prop('required', false);
 			$('#plan' + index).prop('required', false); 
 		}
-		console.log($.inArray($('tr').has('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').find('div').html(), qArray));
+		console.log($.inArray($('tr').has('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').find('div[class=Q]').html(), qArray));
 		
 		requireImprovement = false;
 		$('tr').has('div[id=autoGenerate]').next().find('textarea').val('');
