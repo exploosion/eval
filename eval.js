@@ -89,20 +89,23 @@ function customCallBack ()
 			e.preventDefault();
 		}
 	});
-	
+
 	//Events to drive textarea resizes
-	$('tr').has('div[id=autoGenerate]').next().find('textarea').change(function()
+	setTimeout(function()
 	{
-		resize(this);
-	});
-	$('.plans').keyup(function()
-	{
-		resize(this);
-	});
-	$('tr').has('div[id=additionalAreas]').next().find('textarea').keyup(function()
-	{
-		resize(this);
-	});
+		$('tr').has('div[id=autoGenerate]').next().find('textarea').change(function()
+		{
+			resize(this);
+		});
+		$('.plans').keyup(function()
+		{
+			resize(this);
+		});
+		$('tr').has('div[id=additionalAreas]').next().find('textarea').keyup(function()
+		{
+			resize(this);
+		});
+	}, 0);
 
 	//Load Question titles into qArray and qObject
 	for(loopCount = 0; loopCount < $('div[class=Q]').length; loopCount++)
