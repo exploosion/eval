@@ -285,9 +285,32 @@ function customCallBack ()
 	$('tr').has('div[class=Q]').find('input').click(function()
 	{
 		index = $.inArray($('tr').has('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').find('div[class=Q]').html(), qArray);
-		qObject[index].val = $('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').val();
+		
+		//Calcuate evaluation scores each time questions are clicked
+		if($('tr').has('input[id=' + this.name + ']').find('div[class=Q]').attr('type').includes('emp'))
+		{
+			empTotal = (parseInt(empTotal)) + (parseInt($('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').val()) - parseInt(qObject[index].val));
+			empScore = (parseInt(empTotal) / parseInt($('tr').has('div[type*=emp]').find('input[name*=_calc]').length)).toFixed(1);
+			$('tr').has('div[id=in1]').find('input').val(empScore + ' / 5');
+		}
+		if($('tr').has('input[id=' + this.name + ']').find('div[class=Q]').attr('type').includes('pro'))
+		{
+			proTotal = (parseInt(proTotal)) + (parseInt($('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').val()) - parseInt(qObject[index].val));
+			proScore = (parseInt(proTotal) / parseInt($('tr').has('div[type*=pro]').find('input[name*=_calc]').length)).toFixed(1);
+			$('tr').has('div[id=in2]').find('input').val(proTotal + ' / 5');
+		}
+		if($('tr').has('input[id=' + this.name + ']').find('div[class=Q]').attr('type') == 'sup')
+		{
+			supTotal = (parseInt(supTotal)) + (parseInt($('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').val()) - parseInt(qObject[index].val));
+			supScore = (parseInt(supTotal) / parseInt($('tr').has('div[type=sup]').find('input[name*=_calc]').length)).toFixed(1);
+			$('tr').has('div[id=in3]').find('input').val(supTotal + ' / 5');
+		}
 		
 		debugger;
+
+		qObject[index].val = $('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').val();
+		
+		
 
 		if(qObject[index].val > 0 && qObject[index].val < 3)
 		{
