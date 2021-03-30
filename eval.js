@@ -81,6 +81,15 @@ function customCallBack ()
 		}
 	});
 	
+	//Prevent use of new line in temp Improvement Plan text areas
+	$('.plans').keydown(function(e)
+	{
+		if (e.keyCode == 13 && !e.shiftKey)
+		{
+			e.preventDefault();
+		}
+	});
+	
 	//Events to drive textarea resizes
 	$('tr').has('div[id=autoGenerate]').next().find('textarea').change(function()
 	{
@@ -112,15 +121,6 @@ function customCallBack ()
 		$('div[id=plan]').html($('div[id=plan]').html() + ( '<div class=\'areas\' id=\'area' + loopCount + '\'>' + '<label id-=\'' + 'label' + loopCount + '\'><b>Improvement Area: </b></label>' + qObject[loopCount].q + '<br>') + ('<label><b>Target Date:</b></label><br><input class=\'dates\'id=\'' + 'date' + loopCount + '\' type=\'date\'></input><br>') + ('<label><b>Plan:</b></label><br><textarea class=\'plans\' id=\'' + 'plan' + loopCount + '\' cols=\'71\'></textarea><br><br>' + '</div>'));
 	}
 
-	//Prevent use of new line in temp Improvement Plan text areas
-	$('.plans').keydown(function(e)
-	{
-		if (e.keyCode == 13 && !e.shiftKey)
-		{
-			e.preventDefault();
-		}
-	});
-	
 	//Events to load temp values into qObject
 	$('.dates').change(function()
 	{
