@@ -209,12 +209,13 @@ function customCallBack ()
 	$('hr[class=line]').css({'margin-top':'-10px', 'width':'100em'});
 	$('tr').find('div[class=Q]').css('display', 'inline');
 	$('tr').has('div[class=hiddenHeader]').find('input').hide();
-	$('tr').has('div[class=hiddenChecks]').find('input').hide();
+	$('tr').has('div[class=*hiddenChecks]').find('input').hide();
 	$('td').has('div[id=victim]').hide();
 	$('tr').has('div[id=victim]').next().hide();
 	$('u').contents().unwrap();
 	$('input[name=Complete]').prop('disabled', false);
 	$('tr').has('div[class*=uneditable]').find('input').prop('readonly', true);
+	$('tr').has('div[class*=uneditable]').next().find('textarea').prop('readonly', true);
 
 	//Setting default parameters for error and late documentaion rates
 	$('tr').has('div[id=expectedErrorRate]').find('input').val('5.0%');
