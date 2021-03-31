@@ -32,7 +32,15 @@ function preventAlpha()
 function resize (x)
 {
 	$(x).height(0);
-	$(x).height(x.scrollHeight);	
+	if(x.scrollHeight == 0)
+	{
+		$(x).height('18px');
+	}
+	else
+	{
+		$(x).height(x.scrollHeight);
+	}
+		
 }
 
 function waitForElement (selector, callback, maxTimes = false)
