@@ -72,6 +72,27 @@ function waitForElement (selector, callback, maxTimes = false)
 	}
 }
 
+function hideShow ()
+{
+	if($('tr').has('div[id=staffType]').find('input').eq(0).prop('checked') || $('tr').has('div[id=staffType]').find('input').eq(2).prop('checked'))
+	{
+		$('td').has('div[hidetype=clinical]').show();
+	}
+	else
+	{
+		$('td').has('div[hidetype=clinical]').hide();
+	}
+
+	if($('tr').has('div[id=staffType]').find('input').eq(2).prop('checked') || $('tr').has('div[id=staffType]').find('input').eq(3).prop('checked'))
+	{
+		$('td').has('div[hidetype=sup], hr[hidetype=sup]').show();
+	}
+	else
+	{
+		$('td').has('div[hidetype=sup], hr[hidetype=sup]').hide();
+	}
+}
+
 function customCallBack ()
 {
 	console.log('It\'s here!');
@@ -216,6 +237,12 @@ function customCallBack ()
 	$('input[name=Complete]').prop('disabled', false);
 	$('tr').has('div[class*=uneditable]').find('input').prop('readonly', true);
 	$('tr').has('div[class*=uneditable]').next().find('textarea').prop('readonly', true);
+
+	//On page load, hide/show clincal/sup questions
+	hideShow();
+
+	//Event to hide/show clinical/sup questions when staffType changed
+	$('tr').has('div[id=staffType]').find('input').change(hideShow);
 
 	//Setting default parameters for error and late documentaion rates
 	$('tr').has('div[id=expectedErrorRate]').find('input').val('5.0%');
