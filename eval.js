@@ -209,7 +209,7 @@ function customCallBack ()
 	$('hr[class=line]').css({'margin-top':'-10px', 'width':'100em'});
 	$('tr').find('div[class=Q]').css('display', 'inline');
 	$('tr').has('div[class=hiddenHeader]').find('input').hide();
-	$('tr').has('div[class=*hiddenChecks]').find('input').hide();
+	$('tr').has('div[class*=hiddenChecks]').find('input').hide();
 	$('td').has('div[id=victim]').hide();
 	$('tr').has('div[id=victim]').next().hide();
 	$('u').contents().unwrap();
