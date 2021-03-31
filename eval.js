@@ -211,7 +211,7 @@ function customCallBack ()
 	$('tr').has('div[class=hiddenHeader]').find('input').hide();
 	$('tr').has('div[class=hiddenChecks]').find('input').hide();
 	$('td').has('div[id=victim]').hide();
-	$('tr').has('div[id=victim]').next().find('textarea').hide();
+	$('tr').has('div[id=victim]').next().hide();
 	$('u').contents().unwrap();
 	$('input[name=Complete]').prop('disabled', false);
 	$('tr').has('div[class*=uneditable]').find('input').prop('readonly', true);
