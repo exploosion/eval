@@ -168,6 +168,7 @@ function customCallBack ()
 				$('#plan' + loopCount).val(qObject[loopCount].plan);
 				$('#date' + loopCount).prop('required', true);
 				$('#plan' + loopCount).prop('required', true);
+				resize($('#plan' + loopCount)[0]);
 			}
 		}
 	}
@@ -202,6 +203,7 @@ function customCallBack ()
 	$('tr').has('div[class=hiddenHeader]').find('input').hide();
 	$('tr').has('div[class=hiddenChecks]').find('input').hide();
 	$('td').has('div[id=victim]').hide();
+	$('tr').has('div[id=victim]').next().find('textarea').hide();
 	$('u').contents().unwrap();
 	$('input[name=Complete]').prop('disabled', false);
 	$('tr').has('div[class*=uneditable]').find('input').prop('readonly', true);
@@ -339,6 +341,7 @@ function customCallBack ()
 			$('#plan' + index).val(qObject[index].plan);
 			$('#date' + index).prop('required', true);
 			$('#plan' + index).prop('required', true);
+			resize($('#plan' + index)[0]);
 		}
 		else
 		{
@@ -410,7 +413,7 @@ function customCallBack ()
 
 	});
 
-	//Load values from qArray into Improvement Plan on page submit
+	//Load values from qObject into Improvement Plan on page submit
 	$('input[name=Complete]').click(function()
 	{
 		$('tr').has('div[id=victim]').next().find('textarea').val('');
