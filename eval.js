@@ -529,6 +529,14 @@ function customCallBack ()
 
 	//Event handle to prevent non numerics and only allow one decimal in clinical scores and Custome Metric values
 	$('tr').has('div[class=calc]').find('input').keyup(preventAlpha);
+
+	$('input[name=Complete]').click(function()
+	{
+		if(!$('tr').has('div[id=staffType]').find('input').eq(0).prop('checked') || !$('tr').has('div[id=staffType]').find('input').eq(2).prop('checked'))
+		{
+			$('tr').has('span[hidetype=clinical]').find('input').val();
+		}
+	});
 }
 
 $(document).ready(function()
