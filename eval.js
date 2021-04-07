@@ -134,11 +134,13 @@ function hideShow ()
 	{
 		$('td').has('span[hidetype=sup], hr[hidetype=sup], div[hidetype=sup]').show();
 		requireHidden(true, 'sup');
+		$('tr').has('span[class=hiddenHeader]').find('input').prop('checked', true);
 	}
 	else
 	{
 		$('td').has('span[hidetype=sup], hr[hidetype=sup], div[hidetype=sup]').hide();
 		requireHidden(false, 'sup');
+		$('tr').has('span[class=hiddenHeader]').find('input').prop('checked', false);
 	}
 }
 
