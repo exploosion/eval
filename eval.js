@@ -292,17 +292,17 @@ function customCallBack ()
 	$('tr').has('div[id=expectedLateDocumentationRate]').find('input').val('5.0%');
 
 	//On page load set clinical scores if fields are filed in
-	if($('tr').has('div[id=averageRevenue]').find('input').val())
+	if($('tr').has('div[id=averageRevenue]').find('input').val() && $('tr').has('div[id=expectedRevenue]').find('input').val())
 	{
-		$('tr').has('span[id=revenueScore]').find('input').val(((($('tr').has('div[id=averageRevenue]').find('input').val() / $('tr').has('div[id=expectedRevenue]').find('input').val()).toFixed(1)) * 100 + '%').toFixed(1));
+		$('tr').has('span[id=revenueScore]').find('input').val((($('tr').has('div[id=averageRevenue]').find('input').val() / $('tr').has('div[id=expectedRevenue]').find('input').val()) * 100).toFixed(1) + '%');
 	}
 	else
 	{
 		$('tr').has('span[id=revenueScore]').find('input').val('');
 	}
-	if($('tr').has('div[id=averageBillableHours]').find('input').val())
+	if($('tr').has('div[id=averageBillableHours]').find('input').val() && $('tr').has('div[id=expectedBillableHours]').find('input').val())
 	{
-		$('tr').has('span[id=billableHoursScore]').find('input').val(((($('tr').has('div[id=averageBillableHours]').find('input').val() / $('tr').has('div[id=expectedBillableHours]').find('input').val()).toFixed(1)) * 100 + '%').toFixed(1));
+		$('tr').has('span[id=billableHoursScore]').find('input').val((($('tr').has('div[id=averageBillableHours]').find('input').val() / $('tr').has('div[id=expectedBillableHours]').find('input').val()) * 100).toFixed(1) + '%');
 	}
 	else
 	{
@@ -310,7 +310,7 @@ function customCallBack ()
 	}
 	if($('tr').has('div[id=averageErrorRate]').find('input').val())
 	{
-		$('tr').has('span[id=errorRateScore]').find('input').val(($('tr').has('div[id=averageErrorRate]').find('input').val()).toFixed(1) + '%');
+		$('tr').has('span[id=errorRateScore]').find('input').val(parseFloat($('tr').has('div[id=averageErrorRate]').find('input').val()).toFixed(1) + '%');
 		if(parseFloat($('tr').has('div[id=averageErrorRate]').find('input').val()) > parseFloat($('tr').has('div[id=expectedErrorRate]').find('input').val().slice(0, $('tr').has('div[id=expectedErrorRate]').find('input').val().length - 1)))
 		{
 			$('tr').has('div[id=averageErrorRate]').find('input').css('color', 'red');
@@ -328,7 +328,7 @@ function customCallBack ()
 	}
 	if($('tr').has('div[id=averageLateDocumentationRate]').find('input').val())
 	{
-		$('tr').has('span[id=lateDocumentationRateScore]').find('input').val(($('tr').has('div[id=averageLateDocumentationRate]').find('input').val()).toFixed(1) + '%');
+		$('tr').has('span[id=lateDocumentationRateScore]').find('input').val(parseFloat($('tr').has('div[id=averageLateDocumentationRate]').find('input').val()).toFixed(1) + '%');
 		if(parseFloat($('tr').has('div[id=averageLateDocumentationRate]').find('input').val()) > parseFloat($('tr').has('div[id=expectedLateDocumentationRate]').find('input').val().slice(0, $('tr').has('div[id=expectedLateDocumentationRate]').find('input').val().length - 1)))
 		{
 			$('tr').has('div[id=averageLateDocumentationRate]').find('input').css('color', 'red');
@@ -346,7 +346,7 @@ function customCallBack ()
 	}
 	if($('tr').has('div[id=averageCustomMetric]').find('input').val() && $('tr').has('div[id=expectedCustomMetric]').find('input').val())
 	{
-		$('tr').has('div[id=customMetricScore]').find('input').val((($('tr').has('div[id=averageCustomMetric]').find('input').val() / $('tr').has('div[id=expectedCustomMetric]').find('input').val()).toFixed(1)) * 100 + '%');
+		$('tr').has('div[id=customMetricScore]').find('input').val((($('tr').has('div[id=averageCustomMetric]').find('input').val() / $('tr').has('div[id=expectedCustomMetric]').find('input').val()) * 100).toFixed(1) + '%');
 	}
 	else
 	{
@@ -356,17 +356,17 @@ function customCallBack ()
 	//Event handler for calculating clinical fields and custom metric field
 	$('tr').has('div[class=calc]').change(function()
 	{
-		if($('tr').has('div[id=averageRevenue]').find('input').val())
+		if($('tr').has('div[id=averageRevenue]').find('input').val() && $('tr').has('div[id=expectedRevenue]').find('input').val())
 		{
-			$('tr').has('span[id=revenueScore]').find('input').val(((($('tr').has('div[id=averageRevenue]').find('input').val() / $('tr').has('div[id=expectedRevenue]').find('input').val()).toFixed(1)) * 100 + '%').toFixed(1));
+			$('tr').has('span[id=revenueScore]').find('input').val((($('tr').has('div[id=averageRevenue]').find('input').val() / $('tr').has('div[id=expectedRevenue]').find('input').val()) * 100).toFixed(1) + '%');
 		}
 		else
 		{
 			$('tr').has('span[id=revenueScore]').find('input').val('');
 		}
-		if($('tr').has('div[id=averageBillableHours]').find('input').val())
+		if($('tr').has('div[id=averageBillableHours]').find('input').val() && $('tr').has('div[id=expectedBillableHours]').find('input').val())
 		{
-			$('tr').has('span[id=billableHoursScore]').find('input').val(((($('tr').has('div[id=averageBillableHours]').find('input').val() / $('tr').has('div[id=expectedBillableHours]').find('input').val()).toFixed(1)) * 100 + '%').toFixed(1));
+			$('tr').has('span[id=billableHoursScore]').find('input').val((($('tr').has('div[id=averageBillableHours]').find('input').val() / $('tr').has('div[id=expectedBillableHours]').find('input').val()) * 100).toFixed(1) + '%');
 		}
 		else
 		{
@@ -374,7 +374,7 @@ function customCallBack ()
 		}
 		if($('tr').has('div[id=averageErrorRate]').find('input').val())
 		{
-			$('tr').has('span[id=errorRateScore]').find('input').val(($('tr').has('div[id=averageErrorRate]').find('input').val()).toFixed(1) + '%');
+			$('tr').has('span[id=errorRateScore]').find('input').val(parseFloat($('tr').has('div[id=averageErrorRate]').find('input').val()).toFixed(1) + '%');
 			if(parseFloat($('tr').has('div[id=averageErrorRate]').find('input').val()) > parseFloat($('tr').has('div[id=expectedErrorRate]').find('input').val().slice(0, $('tr').has('div[id=expectedErrorRate]').find('input').val().length - 1)))
 			{
 				$('tr').has('div[id=averageErrorRate]').find('input').css('color', 'red');
@@ -392,7 +392,7 @@ function customCallBack ()
 		}
 		if($('tr').has('div[id=averageLateDocumentationRate]').find('input').val())
 		{
-			$('tr').has('span[id=lateDocumentationRateScore]').find('input').val(($('tr').has('div[id=averageLateDocumentationRate]').find('input').val()).toFixed(1) + '%');
+			$('tr').has('span[id=lateDocumentationRateScore]').find('input').val(parseFloat($('tr').has('div[id=averageLateDocumentationRate]').find('input').val()).toFixed(1) + '%');
 			if(parseFloat($('tr').has('div[id=averageLateDocumentationRate]').find('input').val()) > parseFloat($('tr').has('div[id=expectedLateDocumentationRate]').find('input').val().slice(0, $('tr').has('div[id=expectedLateDocumentationRate]').find('input').val().length - 1)))
 			{
 				$('tr').has('div[id=averageLateDocumentationRate]').find('input').css('color', 'red');
@@ -410,7 +410,7 @@ function customCallBack ()
 		}
 		if($('tr').has('div[id=averageCustomMetric]').find('input').val() && $('tr').has('div[id=expectedCustomMetric]').find('input').val())
 		{
-			$('tr').has('div[id=customMetricScore]').find('input').val((($('tr').has('div[id=averageCustomMetric]').find('input').val() / $('tr').has('div[id=expectedCustomMetric]').find('input').val()).toFixed(1)) * 100 + '%');
+			$('tr').has('div[id=customMetricScore]').find('input').val((($('tr').has('div[id=averageCustomMetric]').find('input').val() / $('tr').has('div[id=expectedCustomMetric]').find('input').val()) * 100).toFixed(1) + '%');
 		}
 		else
 		{
