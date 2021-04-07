@@ -539,7 +539,7 @@ function customCallBack ()
 	//Prevent use of new line in temp Improvement Plan text areas
 	$('.plans').keydown(function(e)
 	{
-		if (e.keyCode == 13 && !e.shiftKey)
+		if (e.keyCode == 13)
 		{
 			e.preventDefault();
 		}
