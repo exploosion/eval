@@ -133,11 +133,13 @@ function hideShow ()
 	if($('tr').has('div[id=staffType]').find('input').eq(2).prop('checked') || $('tr').has('div[id=staffType]').find('input').eq(3).prop('checked'))
 	{
 		$('td').has('span[hidetype=sup], hr[hidetype=sup], div[hidetype=sup]').show();
+		$('tr').has('span[hidetype=sup]').find('input').prop('checked', true);
 		requireHidden(true, 'sup');
 	}
 	else
 	{
 		$('td').has('div[hidetype=sup], hr[hidetype=sup]').hide();
+		$('tr').has('span[hidetype=sup]').find('input').prop('checked', false);
 		requireHidden(false, 'sup');
 	}
 }
