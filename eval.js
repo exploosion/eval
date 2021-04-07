@@ -329,6 +329,10 @@ function customCallBack ()
 	{
 		$('tr').has('div[id=customMetricScore]').find('input').val((($('tr').has('div[id=averageCustomMetric]').find('input').val() / $('tr').has('div[id=expectedCustomMetric]').find('input').val()).toFixed(1)) * 100 + '%');
 	}
+	else
+	{
+		$('tr').has('div[id=customMetricScore]').find('input').val('');
+	}
 
 	//Event handler for calculating clinical fields and custom metric field
 	$('tr').has('div[class=calc]').change(function()
@@ -361,6 +365,10 @@ function customCallBack ()
 		if($('tr').has('div[id=averageCustomMetric]').find('input').val() && $('tr').has('div[id=expectedCustomMetric]').find('input').val())
 		{
 			$('tr').has('div[id=customMetricScore]').find('input').val((($('tr').has('div[id=averageCustomMetric]').find('input').val() / $('tr').has('div[id=expectedCustomMetric]').find('input').val()).toFixed(1)) * 100 + '%');
+		}
+		else
+		{
+			$('tr').has('div[id=customMetricScore]').find('input').val('');
 		}
 	});
 
