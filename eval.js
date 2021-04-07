@@ -74,40 +74,21 @@ function waitForElement (selector, callback, maxTimes = false)
 
 function requireHidden (condition, target)
 {
-	if($('tr').has('div[class*=' + target + ']').find('input'))
-	{
 		$('tr').find('div[class*=' + target + ']').next().remove();
-	}
-	if($('tr').has('div[id=' + target + ']').find('input'))
-	{
 		$('tr').find('div[id=' + target + ']').next().remove();
-	}
-	if($('tr').has('div[hidetype=' + target + ']').find('input'))
-	{
 		$('tr').find('div[hidetype=' + target + ']').next().remove();
-	}
 	
 	if(condition)
 	{
 		$('tr').has('div[class*=' + target + ']').find('input').prop('required', true);
 		$('tr').has('div[class*=' + target + ']').find('select').prop('required', true);
-		if($('tr').has('div[class*=' + target + ']').find('input'))
-		{
-			$('tr').find('div[class*=' + target + ']').after('<div class=\'redAsterisk\' style=\'color : red; display : inline\'>*</div>');
-		}
+		$('tr').find('div[class*=' + target + ']').after('<div class=\'redAsterisk\' style=\'color : red; display : inline\'>*</div>');
 		$('tr').has('div[id=' + target + ']').find('input').prop('required', true);
 		$('tr').has('div[id=' + target + ']').find('select').prop('required', true);
-		if($('tr').has('div[id=' + target + ']').find('input'))
-		{
-			$('tr').find('div[id=' + target + ']').after('<div class=\'redAsterisk\' style=\'color : red; display : inline\'>*</div>');
-		}
+		$('tr').find('div[id=' + target + ']').after('<div class=\'redAsterisk\' style=\'color : red; display : inline\'>*</div>');
 		$('tr').has('div[hideType=' + target + ']').find('input').prop('required', true);
 		$('tr').has('div[hideType=' + target + ']').find('select').prop('required', true);
-		if($('tr').has('div[hidetype=' + target + ']').find('input'))
-		{
-			$('tr').find('div[hideType=' + target + ']').after('<div class=\'redAsterisk\' style=\'color : red; display : inline\'>*</div>');
-		}
-		
+		$('tr').find('div[hideType=' + target + ']').after('<div class=\'redAsterisk\' style=\'color : red; display : inline\'>*</div>');
 	}
 	else
 	{
@@ -151,7 +132,7 @@ function hideShow ()
 
 	if($('tr').has('div[id=staffType]').find('input').eq(2).prop('checked') || $('tr').has('div[id=staffType]').find('input').eq(3).prop('checked'))
 	{
-		$('td').has('div[hidetype=sup], hr[hidetype=sup]').show();
+		$('td').has('span[hidetype=sup], hr[hidetype=sup], div[hidetype=sup]').show();
 		requireHidden(true, 'sup');
 	}
 	else
@@ -297,7 +278,7 @@ function customCallBack ()
 	$('tr').find('div[class*=nlcbBr]').css('display', 'inline');
 	$('hr[class=line]').css({'margin-top':'-10px', 'width':'100em'});
 	$('tr').find('div[class=Q]').css('display', 'inline');
-	$('tr').has('div[class=hiddenHeader]').find('input').hide();
+	$('tr').has('span[class=hiddenHeader]').find('input').hide();
 	$('tr').has('div[class*=hiddenChecks]').find('input').hide();
 	$('td').has('div[id=victim]').hide();
 	$('tr').has('div[id=victim]').next().hide();
