@@ -279,6 +279,11 @@ function customCallBack ()
 	$('tr').has('div[class*=uneditable]').next().find('textarea').prop('readonly', true);
 	$('tr').has('span[class*=uneditable]').find('input').prop('readonly', true);
 	$('tr').has('span[class*=uneditable]').next().find('textarea').prop('readonly', true);
+	$('tr').has('div[id=success]').find('input').hide();
+	if(!$('tr').has('div[id=success]').find('input').prop('checked'))
+	{
+		$('tr').has('div[id=success]').find('input').trigger('click');
+	}
 	requireHiddenNotes(true, 'success');
 
 	//On page load, hide/show clincal/sup questions
