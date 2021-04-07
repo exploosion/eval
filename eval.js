@@ -265,7 +265,7 @@ function customCallBack ()
 	setTimeout(resize($('tr').has('div[id=autoGenerate]').next().find('textarea')[0]), 0);
 	
 	//Some initial housekeeping
-	$('tr').has('div[class*=nlcbBr').find('input[type=checkbox]').before('<br>');
+	$('tr').has('div[class*=nlcbBr]').find('input[type=checkbox]').before('<br>');
 	$('tr').find('div[class*=nlcbBr]').css('display', 'inline');
 	$('tr').has('span[class*=nlcbBr]').find('input[type=checkbox]').before('<br>');
 	$('tr').find('span[class*=nlcbBr]').css('display', 'inline');
