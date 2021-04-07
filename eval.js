@@ -76,6 +76,7 @@ function requireHidden (condition, target)
 {
 	$('tr').find('div[class*=' + target + ']').next().remove();
 	$('tr').find('div[id=' + target + ']').next().remove();
+	$('tr').find('div[hidetype=' + target + ']').next().remove();
 	
 	if(condition)
 	{
@@ -122,23 +123,23 @@ function hideShow ()
 	if($('tr').has('div[id=staffType]').find('input').eq(0).prop('checked') || $('tr').has('div[id=staffType]').find('input').eq(2).prop('checked'))
 	{
 		$('td').has('div[hidetype=clinical]').show();
-		requireHidden('clinical', true);
+		requireHidden(true, 'clinical');
 	}
 	else
 	{
 		$('td').has('div[hidetype=clinical]').hide();
-		requireHidden('clinical', false);
+		requireHidden(false, 'clinical');
 	}
 
 	if($('tr').has('div[id=staffType]').find('input').eq(2).prop('checked') || $('tr').has('div[id=staffType]').find('input').eq(3).prop('checked'))
 	{
 		$('td').has('div[hidetype=sup], hr[hidetype=sup]').show();
-		requireHidden('sup', true);
+		requireHidden(true, 'sup');
 	}
 	else
 	{
 		$('td').has('div[hidetype=sup], hr[hidetype=sup]').hide();
-		requireHidden('sup', false);
+		requireHidden(false, 'sup');
 	}
 }
 
