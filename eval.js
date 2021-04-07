@@ -72,24 +72,73 @@ function waitForElement (selector, callback, maxTimes = false)
 	}
 }
 
+function requireHidden (condition, target)
+{
+	$('tr').find('div[class*=' + target + ']').next().remove();
+	$('tr').find('div[id=' + target + ']').next().remove();
+	
+	if(condition)
+	{
+		$('tr').has('div[class*=' + target + ']').find('input').prop('required', true);
+		$('tr').has('div[class*=' + target + ']').find('select').prop('required', true);
+		$('tr').find('div[class*=' + target + ']').after('<div class=\'redAsterisk\' style=\'color : red; display : inline\'>*</div>');
+		$('tr').has('div[id=' + target + ']').find('input').prop('required', true);
+		$('tr').has('div[id=' + target + ']').find('select').prop('required', true);
+		$('tr').find('div[id=' + target + ']').after('<div class=\'redAsterisk\' style=\'color : red; display : inline\'>*</div>');
+		$('tr').has('div[hideType=' + target + ']').find('input').prop('required', true);
+		$('tr').has('div[hideType=' + target + ']').find('select').prop('required', true);
+		$('tr').find('div[hideType=' + target + ']').after('<div class=\'redAsterisk\' style=\'color : red; display : inline\'>*</div>');
+		
+	}
+	else
+	{
+		$('tr').has('div[class*=' + target + ']').find('input').prop('required', false);
+		$('tr').has('div[class*=' + target + ']').find('select').prop('required', false);
+		$('tr').has('div[id=' + target + ']').find('input').prop('required', false);
+		$('tr').has('div[id=' + target + ']').find('select').prop('required', false);
+		$('tr').has('div[hideType=' + target + ']').find('input').prop('required', false);
+		$('tr').has('div[hideType=' + target + ']').find('select').prop('required', false);
+	}
+}
+
+function requireHiddenNotes (condition, target)
+{
+		if(condition)
+		{
+			$('tr').has('div[class*=' + target + ']').next().find('textarea').prop('required', true);
+			$('tr').has('div[id=' + target + ']').next().find('textarea').prop('required', true);
+			$('tr').has('div[hideType=' + target + ']').next().find('textarea').prop('required', true);
+		}
+		else
+		{
+			$('tr').has('div[class*=' + target + ']').next().find('textarea').prop('required', false);
+			$('tr').has('div[id=' + target + ']').next().find('textarea').prop('required', false);
+			$('tr').has('div[hideType=' + target + ']').next().find('textarea').prop('required', false);
+		}
+}
+
 function hideShow ()
 {
 	if($('tr').has('div[id=staffType]').find('input').eq(0).prop('checked') || $('tr').has('div[id=staffType]').find('input').eq(2).prop('checked'))
 	{
 		$('td').has('div[hidetype=clinical]').show();
+		requireHidden('clinical', true);
 	}
 	else
 	{
 		$('td').has('div[hidetype=clinical]').hide();
+		requireHidden('clinical', false);
 	}
 
 	if($('tr').has('div[id=staffType]').find('input').eq(2).prop('checked') || $('tr').has('div[id=staffType]').find('input').eq(3).prop('checked'))
 	{
 		$('td').has('div[hidetype=sup], hr[hidetype=sup]').show();
+		requireHidden('sup', true);
 	}
 	else
 	{
 		$('td').has('div[hidetype=sup], hr[hidetype=sup]').hide();
+		requireHidden('sup', false);
 	}
 }
 
