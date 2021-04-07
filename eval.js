@@ -137,7 +137,7 @@ function hideShow ()
 	}
 	else
 	{
-		$('td').has('div[hidetype=sup], hr[hidetype=sup]').hide();
+		$('td').has('span[hidetype=sup], hr[hidetype=sup], div[hidetype=sup]').hide();
 		requireHidden(false, 'sup');
 	}
 }
