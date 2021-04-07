@@ -439,7 +439,7 @@ function customCallBack ()
 		supTotal = parseInt(supTotal) + parseInt($('tr').has('div[type*=sup]').find('input[name*=_calc]').eq(loopCount).val());
 	}
 	supScore = (parseInt(supTotal) / parseInt($('tr').has('div[type=sup]').find('input[name*=_calc]').length)).toFixed(1);
-	$('tr').has('div[id=in3]').find('input').val(supScore + ' / 5');
+	$('tr').has('span[id=in3]').find('input').val(supScore + ' / 5');
 	
 	//Expanding Areas Requiring Improvment textarea on page load
 	if($('tr').has('div[id=autoGenerate]').find('input').prop('checked') == false)
@@ -474,7 +474,7 @@ function customCallBack ()
 		{
 			supTotal = (parseInt(supTotal)) + (parseInt($('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').val()) - parseInt(qObject[index].val));
 			supScore = (parseInt(supTotal) / parseInt($('tr').has('div[type=sup]').find('input[name*=_calc]').length)).toFixed(1);
-			$('tr').has('div[id=in3]').find('input').val(supScore + ' / 5');
+			$('tr').has('span[id=in3]').find('input').val(supScore + ' / 5');
 		}
 
 		//Setting value of clicked answer into it's spot in qObject
