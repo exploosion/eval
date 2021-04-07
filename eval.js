@@ -96,8 +96,8 @@ function requireHidden (condition, target)
 		$('tr').has('div[class*=' + target + ']').find('select').prop('required', false);
 		$('tr').has('div[id=' + target + ']').find('input').prop('required', false);
 		$('tr').has('div[id=' + target + ']').find('select').prop('required', false);
-		$('tr').has('div[hideType=' + target + ']').find('input').prop('required', false);
-		$('tr').has('div[hideType=' + target + ']').find('select').prop('required', false);
+		$('tr').has('div[hidetype=' + target + ']').find('input').prop('required', false);
+		$('tr').has('div[hidetype=' + target + ']').find('select').prop('required', false);
 	}
 }
 
@@ -107,13 +107,13 @@ function requireHiddenNotes (condition, target)
 		{
 			$('tr').has('div[class*=' + target + ']').next().find('textarea').prop('required', true);
 			$('tr').has('div[id=' + target + ']').next().find('textarea').prop('required', true);
-			$('tr').has('div[hideType=' + target + ']').next().find('textarea').prop('required', true);
+			$('tr').has('div[hidetype=' + target + ']').next().find('textarea').prop('required', true);
 		}
 		else
 		{
 			$('tr').has('div[class*=' + target + ']').next().find('textarea').prop('required', false);
 			$('tr').has('div[id=' + target + ']').next().find('textarea').prop('required', false);
-			$('tr').has('div[hideType=' + target + ']').next().find('textarea').prop('required', false);
+			$('tr').has('div[hidetype=' + target + ']').next().find('textarea').prop('required', false);
 		}
 }
 
