@@ -121,12 +121,12 @@ function hideShow ()
 {
 	if($('tr').has('div[id=staffType]').find('input').eq(0).prop('checked') || $('tr').has('div[id=staffType]').find('input').eq(2).prop('checked'))
 	{
-		$('td').has('div[hidetype=clinical]').show();
+		$('td').has('div[hidetype=clinical], span[hidetype=clinical]').show();
 		requireHidden(true, 'clinical');
 	}
 	else
 	{
-		$('td').has('div[hidetype=clinical]').hide();
+		$('td').has('div[hidetype=clinical], span[hidetype=clinical]').hide();
 		requireHidden(false, 'clinical');
 	}
 
