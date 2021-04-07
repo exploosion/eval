@@ -292,29 +292,57 @@ function customCallBack ()
 	$('tr').has('div[id=expectedLateDocumentationRate]').find('input').val('5.0%');
 
 	//On page load set clinical scores if fields are filed in
-	$('tr').has('span[id=revenueScore]').find('input').val((($('tr').has('div[id=averageRevenue]').find('input').val() / $('tr').has('div[id=expectedRevenue]').find('input').val()).toFixed(1)) * 100 + '%');
-	$('tr').has('span[id=billableHoursScore]').find('input').val((($('tr').has('div[id=averageBillableHours]').find('input').val() / $('tr').has('div[id=expectedBillableHours]').find('input').val()).toFixed(1)) * 100 + '%');
-	$('tr').has('span[id=errorRateScore]').find('input').val($('tr').has('div[id=averageErrorRate]').find('input').val() + '%');
-	if(parseFloat($('tr').has('div[id=averageErrorRate]').find('input').val()) > parseFloat($('tr').has('div[id=expectedErrorRate]').find('input').val().slice(0, $('tr').has('div[id=expectedErrorRate]').find('input').val().length - 1)))
+	if($('tr').has('div[id=averageRevenue]').find('input').val())
 	{
-		$('tr').has('div[id=averageErrorRate]').find('input').css('color', 'red');
-		$('tr').has('span[id=errorRateScore]').find('input').css('color', 'red');
+		$('tr').has('span[id=revenueScore]').find('input').val(((($('tr').has('div[id=averageRevenue]').find('input').val() / $('tr').has('div[id=expectedRevenue]').find('input').val()).toFixed(1)) * 100 + '%').toFixed(1));
 	}
 	else
 	{
-		$('tr').has('div[id=averageErrorRate]').find('input').css('color', 'black');
-		$('tr').has('span[id=errorRateScore]').find('input').css('color', 'black');
+		$('tr').has('span[id=revenueScore]').find('input').val('');
 	}
-	$('tr').has('span[id=lateDocumentationRateScore]').find('input').val($('tr').has('div[id=averageLateDocumentationRate]').find('input').val() + '%');
-	if(parseFloat($('tr').has('div[id=averageLateDocumentationRate]').find('input').val()) > parseFloat($('tr').has('div[id=expectedLateDocumentationRate]').find('input').val().slice(0, $('tr').has('div[id=expectedLateDocumentationRate]').find('input').val().length - 1)))
+	if($('tr').has('div[id=averageBillableHours]').find('input').val())
 	{
-		$('tr').has('div[id=averageLateDocumentationRate]').find('input').css('color', 'red');
-		$('tr').has('span[id=lateDocumentationRateScore]').find('input').css('color', 'red');
+		$('tr').has('span[id=billableHoursScore]').find('input').val(((($('tr').has('div[id=averageBillableHours]').find('input').val() / $('tr').has('div[id=expectedBillableHours]').find('input').val()).toFixed(1)) * 100 + '%').toFixed(1));
 	}
 	else
 	{
-		$('tr').has('div[id=averageLateDocumentationRate]').find('input').css('color', 'black');
-		$('tr').has('span[id=lateDocumentationRateScore]').find('input').css('color', 'black');
+		$('tr').has('span[id=billableHoursScore]').find('input').val('');
+	}
+	if($('tr').has('div[id=averageErrorRate]').find('input').val())
+	{
+		$('tr').has('span[id=errorRateScore]').find('input').val(($('tr').has('div[id=averageErrorRate]').find('input').val()).toFixed(1) + '%');
+		if(parseFloat($('tr').has('div[id=averageErrorRate]').find('input').val()) > parseFloat($('tr').has('div[id=expectedErrorRate]').find('input').val().slice(0, $('tr').has('div[id=expectedErrorRate]').find('input').val().length - 1)))
+		{
+			$('tr').has('div[id=averageErrorRate]').find('input').css('color', 'red');
+			$('tr').has('span[id=errorRateScore]').find('input').css('color', 'red');
+		}
+		else
+		{
+			$('tr').has('div[id=averageErrorRate]').find('input').css('color', 'black');
+			$('tr').has('span[id=errorRateScore]').find('input').css('color', 'black');
+		}
+	}
+	else
+	{
+		$('tr').has('span[id=errorRateScore]').find('input').val();
+	}
+	if($('tr').has('div[id=averageLateDocumentationRate]').find('input').val())
+	{
+		$('tr').has('span[id=lateDocumentationRateScore]').find('input').val(($('tr').has('div[id=averageLateDocumentationRate]').find('input').val()).toFixed(1) + '%');
+		if(parseFloat($('tr').has('div[id=averageLateDocumentationRate]').find('input').val()) > parseFloat($('tr').has('div[id=expectedLateDocumentationRate]').find('input').val().slice(0, $('tr').has('div[id=expectedLateDocumentationRate]').find('input').val().length - 1)))
+		{
+			$('tr').has('div[id=averageLateDocumentationRate]').find('input').css('color', 'red');
+			$('tr').has('span[id=lateDocumentationRateScore]').find('input').css('color', 'red');
+		}
+		else
+		{
+			$('tr').has('div[id=averageLateDocumentationRate]').find('input').css('color', 'black');
+			$('tr').has('span[id=lateDocumentationRateScore]').find('input').css('color', 'black');
+		}
+	}
+	else
+	{
+		$('tr').has('span[id=lateDocumentationRateScore]').find('input').val()
 	}
 	if($('tr').has('div[id=averageCustomMetric]').find('input').val() && $('tr').has('div[id=expectedCustomMetric]').find('input').val())
 	{
@@ -328,30 +356,57 @@ function customCallBack ()
 	//Event handler for calculating clinical fields and custom metric field
 	$('tr').has('div[class=calc]').change(function()
 	{
-		console.log('Yeet');
-		$('tr').has('span[id=revenueScore]').find('input').val((($('tr').has('div[id=averageRevenue]').find('input').val() / $('tr').has('div[id=expectedRevenue]').find('input').val()).toFixed(1)) * 100 + '%');
-		$('tr').has('span[id=billableHoursScore]').find('input').val((($('tr').has('div[id=averageBillableHours]').find('input').val() / $('tr').has('div[id=expectedBillableHours]').find('input').val()).toFixed(1)) * 100 + '%');
-		$('tr').has('span[id=errorRateScore]').find('input').val($('tr').has('div[id=averageErrorRate]').find('input').val() + '%');
-		if(parseFloat($('tr').has('div[id=averageErrorRate]').find('input').val()) > parseFloat($('tr').has('div[id=expectedErrorRate]').find('input').val().slice(0, $('tr').has('div[id=expectedErrorRate]').find('input').val().length - 1)))
+		if($('tr').has('div[id=averageRevenue]').find('input').val())
 		{
-			$('tr').has('div[id=averageErrorRate]').find('input').css('color', 'red');
-			$('tr').has('span[id=errorRateScore]').find('input').css('color', 'red');
+			$('tr').has('span[id=revenueScore]').find('input').val(((($('tr').has('div[id=averageRevenue]').find('input').val() / $('tr').has('div[id=expectedRevenue]').find('input').val()).toFixed(1)) * 100 + '%').toFixed(1));
 		}
 		else
 		{
-			$('tr').has('div[id=averageErrorRate]').find('input').css('color', 'black');
-			$('tr').has('span[id=errorRateScore]').find('input').css('color', 'black');
+			$('tr').has('span[id=revenueScore]').find('input').val('');
 		}
-		$('tr').has('span[id=lateDocumentationRateScore]').find('input').val($('tr').has('div[id=averageLateDocumentationRate]').find('input').val() + '%');
-		if(parseFloat($('tr').has('div[id=averageLateDocumentationRate]').find('input').val()) > parseFloat($('tr').has('div[id=expectedLateDocumentationRate]').find('input').val().slice(0, $('tr').has('div[id=expectedLateDocumentationRate]').find('input').val().length - 1)))
+		if($('tr').has('div[id=averageBillableHours]').find('input').val())
 		{
-			$('tr').has('div[id=averageLateDocumentationRate]').find('input').css('color', 'red');
-			$('tr').has('span[id=lateDocumentationRateScore]').find('input').css('color', 'red');
+			$('tr').has('span[id=billableHoursScore]').find('input').val(((($('tr').has('div[id=averageBillableHours]').find('input').val() / $('tr').has('div[id=expectedBillableHours]').find('input').val()).toFixed(1)) * 100 + '%').toFixed(1));
 		}
 		else
 		{
-			$('tr').has('div[id=averageLateDocumentationRate]').find('input').css('color', 'black');
-			$('tr').has('span[id=lateDocumentationRateScore]').find('input').css('color', 'black');
+			$('tr').has('span[id=billableHoursScore]').find('input').val('');
+		}
+		if($('tr').has('div[id=averageErrorRate]').find('input').val())
+		{
+			$('tr').has('span[id=errorRateScore]').find('input').val(($('tr').has('div[id=averageErrorRate]').find('input').val()).toFixed(1) + '%');
+			if(parseFloat($('tr').has('div[id=averageErrorRate]').find('input').val()) > parseFloat($('tr').has('div[id=expectedErrorRate]').find('input').val().slice(0, $('tr').has('div[id=expectedErrorRate]').find('input').val().length - 1)))
+			{
+				$('tr').has('div[id=averageErrorRate]').find('input').css('color', 'red');
+				$('tr').has('span[id=errorRateScore]').find('input').css('color', 'red');
+			}
+			else
+			{
+				$('tr').has('div[id=averageErrorRate]').find('input').css('color', 'black');
+				$('tr').has('span[id=errorRateScore]').find('input').css('color', 'black');
+			}
+		}
+		else
+		{
+			$('tr').has('span[id=errorRateScore]').find('input').val();
+		}
+		if($('tr').has('div[id=averageLateDocumentationRate]').find('input').val())
+		{
+			$('tr').has('span[id=lateDocumentationRateScore]').find('input').val(($('tr').has('div[id=averageLateDocumentationRate]').find('input').val()).toFixed(1) + '%');
+			if(parseFloat($('tr').has('div[id=averageLateDocumentationRate]').find('input').val()) > parseFloat($('tr').has('div[id=expectedLateDocumentationRate]').find('input').val().slice(0, $('tr').has('div[id=expectedLateDocumentationRate]').find('input').val().length - 1)))
+			{
+				$('tr').has('div[id=averageLateDocumentationRate]').find('input').css('color', 'red');
+				$('tr').has('span[id=lateDocumentationRateScore]').find('input').css('color', 'red');
+			}
+			else
+			{
+				$('tr').has('div[id=averageLateDocumentationRate]').find('input').css('color', 'black');
+				$('tr').has('span[id=lateDocumentationRateScore]').find('input').css('color', 'black');
+			}
+		}
+		else
+		{
+			$('tr').has('span[id=lateDocumentationRateScore]').find('input').val()
 		}
 		if($('tr').has('div[id=averageCustomMetric]').find('input').val() && $('tr').has('div[id=expectedCustomMetric]').find('input').val())
 		{
@@ -363,7 +418,7 @@ function customCallBack ()
 		}
 	});
 
-	//On page load, calculate evaluation scores
+	//Calculate evaluation scores
 	empTotal = 0;
 	for(loopCount = 0; loopCount < $('tr').has('div[type*=emp]').find('input[name*=_calc]').length; loopCount++)
 	{
@@ -545,13 +600,13 @@ function customCallBack ()
 		}
 	});
 
-	$('input[name=Complete]').click(function()
+	/*$('input[name=Complete]').click(function()
 	{
 		if(!$('tr').has('div[id=staffType]').find('input').eq(0).prop('checked') || !$('tr').has('div[id=staffType]').find('input').eq(2).prop('checked'))
 		{
 			$('tr').has('span[hidetype=clinical]').find('input').val();
 		}
-	});
+	});*/
 }
 
 $(document).ready(function()
