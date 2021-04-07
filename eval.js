@@ -286,6 +286,8 @@ function customCallBack ()
 	$('input[name=Complete]').prop('disabled', false);
 	$('tr').has('div[class*=uneditable]').find('input').prop('readonly', true);
 	$('tr').has('div[class*=uneditable]').next().find('textarea').prop('readonly', true);
+	$('tr').has('span[class*=uneditable]').find('input').prop('readonly', true);
+	$('tr').has('span[class*=uneditable]').next().find('textarea').prop('readonly', true);
 
 	//On page load, hide/show clincal/sup questions
 	hideShow();
