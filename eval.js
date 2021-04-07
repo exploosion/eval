@@ -130,7 +130,7 @@ function hideShow ()
 		requireHidden(false, 'clinical');
 	}
 
-	if($('tr').has('div[id=staffType]').find('input').eq(2).prop('checked') || $('tr').has('div[id=staffType]').find('input').eq(3).prop('checked'))
+	if($('tr').has('div[id=staffType]').find('input').eq(0).prop('checked') || $('tr').has('div[id=staffType]').find('input').eq(1).prop('checked'))
 	{
 		$('td').has('span[hidetype=sup], hr[hidetype=sup], div[hidetype=sup]').show();
 		requireHidden(true, 'sup');
