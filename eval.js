@@ -158,15 +158,6 @@ function customCallBack ()
 			$(this).val('0');
 		}
 	});
-	
-	//Prevent use of new line in temp Improvement Plan text areas
-	$('.plans').keydown(function(e)
-	{
-		if (e.keyCode == 13 && !e.shiftKey)
-		{
-			e.preventDefault();
-		}
-	});
 
 	//Events to drive textarea resizes
 	setTimeout(function()
@@ -544,6 +535,15 @@ function customCallBack ()
 
 	//Event handle to prevent non numerics and only allow one decimal in clinical scores and Custome Metric values
 	$('tr').has('div[class=calc]').find('input').keyup(preventAlpha);
+
+	//Prevent use of new line in temp Improvement Plan text areas
+	$('.plans').keydown(function(e)
+	{
+		if (e.keyCode == 13 && !e.shiftKey)
+		{
+			e.preventDefault();
+		}
+	});
 
 	$('input[name=Complete]').click(function()
 	{
