@@ -325,7 +325,10 @@ function customCallBack ()
 		$('tr').has('div[id=averageLateDocumentationRate]').find('input').css('color', 'black');
 		$('tr').has('span[id=lateDocumentationRateScore]').find('input').css('color', 'black');
 	}
-	$('tr').has('div[id=customMetricScore]').find('input').val((($('tr').has('div[id=averageCustomMetric]').find('input').val() / $('tr').has('div[id=expectedCustomMetric]').find('input').val()).toFixed(1)) * 100 + '%');
+	if($('tr').has('div[id=averageCustomMetric]').find('input').val() && $('tr').has('div[id=expectedCustomMetric]').find('input').val())
+	{
+		$('tr').has('div[id=customMetricScore]').find('input').val((($('tr').has('div[id=averageCustomMetric]').find('input').val() / $('tr').has('div[id=expectedCustomMetric]').find('input').val()).toFixed(1)) * 100 + '%');
+	}
 
 	//Event handler for calculating clinical fields and custom metric field
 	$('tr').has('div[class=calc]').change(function()
@@ -355,7 +358,10 @@ function customCallBack ()
 			$('tr').has('div[id=averageLateDocumentationRate]').find('input').css('color', 'black');
 			$('tr').has('span[id=lateDocumentationRateScore]').find('input').css('color', 'black');
 		}
-		$('tr').has('div[id=customMetricScore]').find('input').val((($('tr').has('div[id=averageCustomMetric]').find('input').val() / $('tr').has('div[id=expectedCustomMetric]').find('input').val()).toFixed(1)) * 100 + '%');
+		if($('tr').has('div[id=averageCustomMetric]').find('input').val() && $('tr').has('div[id=expectedCustomMetric]').find('input').val())
+		{
+			$('tr').has('div[id=customMetricScore]').find('input').val((($('tr').has('div[id=averageCustomMetric]').find('input').val() / $('tr').has('div[id=expectedCustomMetric]').find('input').val()).toFixed(1)) * 100 + '%');
+		}
 	});
 
 	//On page load, calculate evaluation scores
