@@ -288,6 +288,7 @@ function customCallBack ()
 	$('tr').has('div[class*=uneditable]').next().find('textarea').prop('readonly', true);
 	$('tr').has('span[class*=uneditable]').find('input').prop('readonly', true);
 	$('tr').has('span[class*=uneditable]').next().find('textarea').prop('readonly', true);
+	requireHiddenNotes(true, 'success');
 
 	//On page load, hide/show clincal/sup questions
 	hideShow();
