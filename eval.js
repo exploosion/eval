@@ -163,11 +163,11 @@ function customCallBack ()
 	});
 
 	//On page load, set Dress code question values to be more readable.
-	$('tr').has('div[id=yesNo]').find('input[type=button]').eq(0).val('Yes');
-	$('tr').has('div[id=yesNo]').find('input[type=button]').eq(1).val('No (details below)');
+	$('tr').has('div[id=dressCode]').find('input[type=button]').eq(0).val('Yes');
+	$('tr').has('div[id=dressCode]').find('input[type=button]').eq(1).val('No (details below)');
 
 	//On page load, Load Yes No question into numeric push button
-	if($('tr').has('div[id=yesNo]').find('input[type=button]').eq(0).css('background-color') == 'rgb(204, 204, 204)')
+	/*if($('tr').has('div[id=yesNo]').find('input[type=button]').eq(0).css('background-color') == 'rgb(204, 204, 204)')
 	{
 		$('tr').has('div[id=dressCode]').find('input[name*=_calc]').val('5');
 		if($('tr').has('div[id=dressCode]').find('input[type=button]').eq(4).css('background-color') == 'rgb(255, 255, 255)')
@@ -195,10 +195,10 @@ function customCallBack ()
 			$('tr').has('div[id=dressCode]').find('input[type=button]').eq(0).trigger('click');
 		}
 	}
-	$('tr').has('div[id=dressCode]').find('input[name*=_calc]').val('');
+	$('tr').has('div[id=dressCode]').find('input[name*=_calc]').val('');*/
 
 	//Event handler to drive Yes No question
-	$('tr').has('div[id=yesNo]').find('input[type=button]').click(function()
+	/*$('tr').has('div[id=yesNo]').find('input[type=button]').click(function()
 	{
 		if($('tr').has('div[id=yesNo]').find('input[type=button]').eq(0).css('background-color') == 'rgb(204, 204, 204)')
 		{
@@ -229,10 +229,15 @@ function customCallBack ()
 			}
 		}
 		$('tr').has('div[id=dressCode]').find('input[name*=_calc]').val('');
-	});
+	});*/
 
 	//Hide the numeric push button version of Dress Code Adherence question
 	//$('td').has('div[id=dressCode]').hide();
+
+	//Hide unneeded buttons for dress code question
+	$('tr').has('div[id=dressCode]').find('input[type=button]').eq(4).hide();
+	$('tr').has('div[id=dressCode]').find('input[type=button]').eq(3).hide();
+	$('tr').has('div[id=dressCode]').find('input[type=button]').eq(2).hide();
 
 	//Events to drive textarea resizes
 	setTimeout(function()
