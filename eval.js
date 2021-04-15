@@ -198,6 +198,7 @@ function customCallBack ()
 			$('tr').has('div[id=dressCode]').find('input[type=button]').eq(0).trigger('click');
 		}
 	}
+	$('tr').has('div[id=dressCode]').find('input[name*=_calc]').val('');
 
 	//Event handler to drive Yes No question
 	$('tr').has('div[id=yesNo]').find('input[type=button]').click(function()
@@ -507,21 +508,21 @@ function customCallBack ()
 	empTotal = 0;
 	for(loopCount = 0; loopCount < $('tr').has('div[type*=emp]').find('input[name*=_calc]').length; loopCount++)
 	{
-		empTotal = parseInt(empTotal) + parseInt($('tr').has('div[type*=emp]').find('input[name*=_calc]').eq(loopCount).val());
+		empTotal = parseInt(empTotal) + parseInt($('tr').has('div[type*=emp]').find('input[name*=_calc]').eq(loopCount).val() ? $('tr').has('div[type*=emp]').find('input[name*=_calc]').eq(loopCount).val() : 0);
 	}
 	empScore = (parseInt(empTotal) / parseInt($('tr').has('div[type*=emp]').find('input[name*=_calc]').length)).toFixed(1);
 	$('tr').has('div[id=in1]').find('input').val(empScore + ' / 5');
 	proTotal = 0;
 	for(loopCount = 0; loopCount < $('tr').has('div[type*=pro]').find('input[name*=_calc]').length; loopCount++)
 	{
-		proTotal = parseInt(proTotal) + parseInt($('tr').has('div[type*=pro]').find('input[name*=_calc]').eq(loopCount).val());
+		proTotal = parseInt(proTotal) + parseInt($('tr').has('div[type*=pro]').find('input[name*=_calc]').eq(loopCount).val() ? $('tr').has('div[type*=pro]').find('input[name*=_calc]').eq(loopCount).val() : 0);
 	}
 	proScore = (parseInt(proTotal) / parseInt($('tr').has('div[type*=pro]').find('input[name*=_calc]').length)).toFixed(1);
 	$('tr').has('div[id=in2]').find('input').val(proScore + ' / 5');
 	supTotal = 0;
 	for(loopCount = 0; loopCount < $('tr').has('div[type=sup]').find('input[name*=_calc]').length; loopCount++)
 	{
-		supTotal = parseInt(supTotal) + parseInt($('tr').has('div[type*=sup]').find('input[name*=_calc]').eq(loopCount).val());
+		supTotal = parseInt(supTotal) + parseInt($('tr').has('div[type*=sup]').find('input[name*=_calc]').eq(loopCount).val() ? $('tr').has('div[type*=sup]').find('input[name*=_calc]').eq(loopCount).val() : 0);
 	}
 	supScore = (parseInt(supTotal) / parseInt($('tr').has('div[type=sup]').find('input[name*=_calc]').length)).toFixed(1);
 	$('tr').has('span[id=in3]').find('input').val(supScore + ' / 5');
@@ -545,19 +546,19 @@ function customCallBack ()
 		//Calcuate evaluation scores each time questions are clicked before loading the value into qObject so we can add or subtract from total scores first
 		if($('tr').has('input[id=' + this.name + ']').find('div[class=Q]').attr('type').includes('emp'))
 		{
-			empTotal = (parseInt(empTotal)) + (parseInt($('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').val()) - parseInt(qObject[index].val));
+			empTotal = (parseInt(empTotal)) + (parseInt($('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').val() ? $('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').val() : 0) - parseInt(qObject[index].val));
 			empScore = (parseInt(empTotal) / parseInt($('tr').has('div[type*=emp]').find('input[name*=_calc]').length)).toFixed(1);
 			$('tr').has('div[id=in1]').find('input').val(empScore + ' / 5');
 		}
 		if($('tr').has('input[id=' + this.name + ']').find('div[class=Q]').attr('type').includes('pro'))
 		{
-			proTotal = (parseInt(proTotal)) + (parseInt($('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').val()) - parseInt(qObject[index].val));
+			proTotal = (parseInt(proTotal)) + (parseInt($('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').val() ? $('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').val() : 0) - parseInt(qObject[index].val));
 			proScore = (parseInt(proTotal) / parseInt($('tr').has('div[type*=pro]').find('input[name*=_calc]').length)).toFixed(1);
 			$('tr').has('div[id=in2]').find('input').val(proScore + ' / 5');
 		}
 		if($('tr').has('input[id=' + this.name + ']').find('div[class=Q]').attr('type') == 'sup')
 		{
-			supTotal = (parseInt(supTotal)) + (parseInt($('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').val()) - parseInt(qObject[index].val));
+			supTotal = (parseInt(supTotal)) + (parseInt($('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').val() ? $('input[name=q' + this.name.substring(1,this.name.length) + '_calc]').val() : 0) - parseInt(qObject[index].val));
 			supScore = (parseInt(supTotal) / parseInt($('tr').has('div[type=sup]').find('input[name*=_calc]').length)).toFixed(1);
 			$('tr').has('span[id=in3]').find('input').val(supScore + ' / 5');
 		}
