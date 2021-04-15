@@ -232,7 +232,7 @@ function customCallBack ()
 	});
 
 	//Hide the numeric push button version of Dress Code Adherence question
-	$('td').has('div[id=dressCode]').hide();
+	//$('td').has('div[id=dressCode]').hide();
 
 	//Events to drive textarea resizes
 	setTimeout(function()
