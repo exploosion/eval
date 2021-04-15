@@ -123,6 +123,10 @@ function hideShow ()
 	{
 		$('td').has('div[hidetype=clinical], span[hidetype=clinical]').show();
 		requireHidden(true, 'clinical');
+		$('#report').attr('src', function (i, val) 
+		{ 
+			return val; 
+		});
 	}
 	else
 	{
@@ -160,6 +164,78 @@ function customCallBack ()
 			$(this).val('0');
 		}
 	});
+
+	//On page load, set Dress code question values to be more readable.
+	$('tr').has('div[id=yesNo]').find('input[type=button]').eq(0).val('Yes');
+	$('tr').has('div[id=yesNo]').find('input[type=button]').eq(1).val('No (details below)');
+
+	//On page load, Load Yes No question into numeric push button
+	if($('tr').has('div[id=yesNo]').find('input[type=button]').eq(0).css('background-color') == 'rgb(204, 204, 204)')
+	{
+		$('tr').has('div[id=dressCode]').find('input[name*=_calc]').val('5');
+		if($('tr').has('div[id=dressCode]').find('input[type=button]').eq(4).css('background-color') == 'rgb(255, 255, 255)')
+		{
+			$('tr').has('div[id=dressCode]').find('input[type=button]').eq(4).trigger('click');
+		}
+	}
+	else if ($('tr').has('div[id=yesNo]').find('input[type=button]').eq(1).css('background-color') == 'rgb(204, 204, 204)')
+	{
+		$('tr').has('div[id=dressCode]').find('input[name*=_calc]').val('1');
+		if($('tr').has('div[id=dressCode]').find('input[type=button]').eq(0).css('background-color') == 'rgb(255, 255, 255)')
+		{
+			$('tr').has('div[id=dressCode]').find('input[type=button]').eq(0).trigger('click');
+		}
+	}
+	else
+	{
+		$('tr').has('div[id=dressCode]').find('input[name*=_calc]').val('0');
+		if($('tr').has('div[id=dressCode]').find('input[type=button]').eq(4).css('background-color') == 'rgb(204, 204, 204)')
+		{
+			$('tr').has('div[id=dressCode]').find('input[type=button]').eq(4).trigger('click');
+		}
+		if($('tr').has('div[id=dressCode]').find('input[type=button]').eq(0).css('background-color') == 'rgb(204, 204, 204)')
+		{
+			$('tr').has('div[id=dressCode]').find('input[type=button]').eq(0).trigger('click');
+		}
+	}
+	$('tr').has('div[id=dressCode]').find('input[name*=_calc]').val('');
+
+	//Event handler to drive Yes No question
+	$('tr').has('div[id=yesNo]').find('input[type=button]').click(function()
+	{
+		if($('tr').has('div[id=yesNo]').find('input[type=button]').eq(0).css('background-color') == 'rgb(204, 204, 204)')
+		{
+			$('tr').has('div[id=dressCode]').find('input[name*=_calc]').val('5');
+			if($('tr').has('div[id=dressCode]').find('input[type=button]').eq(4).css('background-color') == 'rgb(255, 255, 255)')
+			{
+				$('tr').has('div[id=dressCode]').find('input[type=button]').eq(4).trigger('click');
+			}
+		}
+		else if ($('tr').has('div[id=yesNo]').find('input[type=button]').eq(1).css('background-color') == 'rgb(204, 204, 204)')
+		{
+			$('tr').has('div[id=dressCode]').find('input[name*=_calc]').val('1');
+			if($('tr').has('div[id=dressCode]').find('input[type=button]').eq(0).css('background-color') == 'rgb(255, 255, 255)')
+			{
+				$('tr').has('div[id=dressCode]').find('input[type=button]').eq(0).trigger('click');
+			}
+		}
+		else
+		{
+			$('tr').has('div[id=dressCode]').find('input[name*=_calc]').val('0');
+			if($('tr').has('div[id=dressCode]').find('input[type=button]').eq(4).css('background-color') == 'rgb(204, 204, 204)')
+			{
+				$('tr').has('div[id=dressCode]').find('input[type=button]').eq(4).trigger('click');
+			}
+			if($('tr').has('div[id=dressCode]').find('input[type=button]').eq(0).css('background-color') == 'rgb(204, 204, 204)')
+			{
+				$('tr').has('div[id=dressCode]').find('input[type=button]').eq(0).trigger('click');
+			}
+		}
+		$('tr').has('div[id=dressCode]').find('input[name*=_calc]').val('');
+	});
+
+	//Hide the numeric push button version of Dress Code Adherence question
+	$('td').has('div[id=dressCode]').hide();
 
 	//Events to drive textarea resizes
 	setTimeout(function()
@@ -426,7 +502,7 @@ function customCallBack ()
 			$('tr').has('div[id=customMetricScore]').find('input').val('');
 		}
 	});
-
+	
 	//Calculate evaluation scores
 	empTotal = 0;
 	for(loopCount = 0; loopCount < $('tr').has('div[type*=emp]').find('input[name*=_calc]').length; loopCount++)
