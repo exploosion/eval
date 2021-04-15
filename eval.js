@@ -722,7 +722,7 @@ function customCallBack ()
 	setTimeout(function()
 	{
 		$('td').has('div[id=loadingForm]').hide();
-	}, 500);
+	}, 1000);
 }
 
 //Only run code if page has a Complete button
