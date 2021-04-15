@@ -701,6 +701,9 @@ function customCallBack ()
 
 	//Trigger above event for user on page load
 	$('input[id=refreshReport]').trigger('click');
+
+	//Hide Loading Form label on Page Load
+	$('td').has('div[id=loadingForm]').hide();
 	/*$('input[name=Complete]').click(function()
 	{
 		if(!$('tr').has('div[id=staffType]').find('input').eq(0).prop('checked') || !$('tr').has('div[id=staffType]').find('input').eq(2).prop('checked'))
