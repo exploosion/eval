@@ -718,7 +718,7 @@ function customCallBack ()
 	});*/
 
 	//Change Form Loading message to Form Loaded
-	$('td').find('div[id=loadingForm]').text('Form loaded, thank you for waiting!').delay(500);
+	$('td').find('div[id=loadingForm]').text('Form loaded, thank you for waiting!').delay(1000);
 	
 }
 
