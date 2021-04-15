@@ -716,10 +716,13 @@ function customCallBack ()
 	});*/
 
 	//Change Form Loading message to Form Loaded
-	$('td').find('div[id=loadingForm]').text('Form loaded, thank you for waiting!').delay(500);
+	$('td').find('div[id=loadingForm]').text('Form loaded, thank you for waiting!');
 	
 	//Hide Loading Form label on Page Load
-	$('td').has('div[id=loadingForm]').hide();
+	setTimeout(function()
+	{
+		$('td').has('div[id=loadingForm]').hide();
+	}, 500);
 }
 
 //Only run code if page has a Complete button
