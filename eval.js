@@ -716,6 +716,9 @@ function customCallBack ()
 			$('tr').has('span[hidetype=clinical]').find('input').val();
 		}
 	});*/
+
+	//Change Form Loading message to Form Loaded
+	$('td').find('div[id=loadingForm]').text('Form loaded, thank you for waiting!');
 }
 
 //Only run code if page has a Complete button
