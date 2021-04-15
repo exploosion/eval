@@ -163,8 +163,8 @@ function customCallBack ()
 	});
 
 	//On page load, set Dress code question values to be more readable.
-	$('tr').has('div[id=dressCode]').find('input[type=button]').eq(0).val('Yes');
-	$('tr').has('div[id=dressCode]').find('input[type=button]').eq(1).val('No (details below)');
+	$('tr').has('div[id=dressCode]').find('input[type=button]').eq(0).val('No (details below)');
+	$('tr').has('div[id=dressCode]').find('input[type=button]').eq(1).val('Yes');
 
 	//On page load, Load Yes No question into numeric push button
 	/*if($('tr').has('div[id=yesNo]').find('input[type=button]').eq(0).css('background-color') == 'rgb(204, 204, 204)')
