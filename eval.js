@@ -707,8 +707,6 @@ function customCallBack ()
 	//Trigger above event for user on page load
 	$('input[id=refreshReport]').trigger('click');
 
-	//Hide Loading Form label on Page Load
-	$('td').has('div[id=loadingForm]').hide();
 	/*$('input[name=Complete]').click(function()
 	{
 		if(!$('tr').has('div[id=staffType]').find('input').eq(0).prop('checked') || !$('tr').has('div[id=staffType]').find('input').eq(2).prop('checked'))
@@ -718,8 +716,10 @@ function customCallBack ()
 	});*/
 
 	//Change Form Loading message to Form Loaded
-	$('td').find('div[id=loadingForm]').text('Form loaded, thank you for waiting!').delay(1000);
+	$('td').find('div[id=loadingForm]').text('Form loaded, thank you for waiting!').delay(500);
 	
+	//Hide Loading Form label on Page Load
+	$('td').has('div[id=loadingForm]').hide();
 }
 
 //Only run code if page has a Complete button
