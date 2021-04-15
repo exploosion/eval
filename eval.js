@@ -123,6 +123,7 @@ function hideShow ()
 	{
 		$('td').has('div[hidetype=clinical], span[hidetype=clinical]').show();
 		requireHidden(true, 'clinical');
+		$('input[id=refreshReport]').trigger('click');
 	}
 	else
 	{
@@ -697,6 +698,9 @@ function customCallBack ()
 			return val; 
 		});
 	});
+
+	//Trigger above event for user on page load
+	$('input[id=refreshReport]').trigger('click');
 	/*$('input[name=Complete]').click(function()
 	{
 		if(!$('tr').has('div[id=staffType]').find('input').eq(0).prop('checked') || !$('tr').has('div[id=staffType]').find('input').eq(2).prop('checked'))
