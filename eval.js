@@ -716,7 +716,7 @@ function customCallBack ()
 	});*/
 
 	//Change Form Loading message to Form Loaded
-	$('td').find('div[id=loadingForm]').text('Form loaded, thank you for waiting!');
+	$('td').find('div[id=loadingForm]').text('Loaded, thank you for waiting!');
 	
 	//Hide Loading Form label on Page Load
 	setTimeout(function()
