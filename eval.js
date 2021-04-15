@@ -123,10 +123,6 @@ function hideShow ()
 	{
 		$('td').has('div[hidetype=clinical], span[hidetype=clinical]').show();
 		requireHidden(true, 'clinical');
-		$('#report').attr('src', function (i, val) 
-		{ 
-			return val; 
-		});
 	}
 	else
 	{
@@ -686,6 +682,21 @@ function customCallBack ()
 		}
 	});
 
+	//Button to refresh report if login error occurs
+	$('input[id=refreshReport]').click(function()
+	{
+		setTimeout(function ()
+		{
+			$('#credibleBI').attr('src', function (i, val) 
+			{ 
+				return val; 
+			});
+		}, 250);
+		$('#report').attr('src', function (i, val) 
+		{ 
+			return val; 
+		});
+	});
 	/*$('input[name=Complete]').click(function()
 	{
 		if(!$('tr').has('div[id=staffType]').find('input').eq(0).prop('checked') || !$('tr').has('div[id=staffType]').find('input').eq(2).prop('checked'))
@@ -695,6 +706,7 @@ function customCallBack ()
 	});*/
 }
 
+//Only run code if page has a Complete button
 $(document).ready(function()
 {
 	waitForElement('input[name=Complete]', customCallBack, 10);
