@@ -198,7 +198,6 @@ function customCallBack ()
 			$('tr').has('div[id=dressCode]').find('input[type=button]').eq(0).trigger('click');
 		}
 	}
-	$('tr').has('div[id=dressCode]').find('input[name*=_calc]').val('');
 
 	//Event handler to drive Yes No question
 	$('tr').has('div[id=yesNo]').find('input[type=button]').click(function()
