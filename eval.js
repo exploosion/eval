@@ -1,3 +1,4 @@
+const noPlanMessage = 'No required development from qustions above.';
 var test;
 var length;
 var index;
@@ -268,7 +269,7 @@ function customCallBack ()
 	}
 	
 	//Create No Required Development From Qustions Above div
-	$('div[id=plan]').html($('div[id=plan]').html() + ('<div id=\'noPlan\'>No required development from qustions above.</div>'));
+	$('div[id=plan]').html($('div[id=plan]').html() + ('<div id=\'noPlan\'>' + noPlanMessage + '</div>'));
 
 	//Create improvement plan fields
 	for(loopCount = 0; loopCount < length; loopCount++)
