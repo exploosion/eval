@@ -292,8 +292,9 @@ function customCallBack ()
 	});
 
 	//Load into improvement plan
-	if($('tr').has('div[id=victim]').next().find('textarea').val() != '')
+	if($('tr').has('div[id=victim]').next().find('textarea').val() != '' && $('tr').has('div[id=victim]').next().find('textarea').val() != noPlanMessage)
 	{
+		requireImprovement = true;
 		split = $('tr').has('div[id=victim]').next().find('textarea').val().split('\n');
 		split = $.grep(split,function(value)
 		{
@@ -324,6 +325,10 @@ function customCallBack ()
 				resize($('#plan' + loopCount)[0]);
 			}
 		}
+	}
+	else if ($('tr').has('div[id=victim]').next().find('textarea').val() == noPlanMessage)
+	{
+		requireImprovement = false;
 	}
 
 	//On page load hide temp improvement plan fields that are not needed at the moment
