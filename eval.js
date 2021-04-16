@@ -1,4 +1,4 @@
-const noPlanMessage = 'No required development from qustions above.';
+const noPlanMessage = 'No required development from questions above.';
 var test;
 var length;
 var index;
