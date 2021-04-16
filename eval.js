@@ -267,6 +267,9 @@ function customCallBack ()
 		qArray[loopCount] = qObject[loopCount].q;
 	}
 	
+	//Create No Required Development From Qustions Above div
+	$('div[id=plan]').html($('div[id=plan]').html() + ('<div id=\'noPlan\'><b>No required development from qustions above.</b></div>'));
+
 	//Create improvement plan fields
 	for(loopCount = 0; loopCount < length; loopCount++)
 	{
