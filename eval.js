@@ -125,11 +125,13 @@ function hideShow ()
 		$('td').has('div[hidetype=clinical], span[hidetype=clinical]').show();
 		requireHidden(true, 'clinical');
 		$('input[id=refreshReport]').trigger('click');
+		$('tr').has('div[class=calc]').trigger('change');
 	}
 	else
 	{
 		$('td').has('div[hidetype=clinical], span[hidetype=clinical]').hide();
 		requireHidden(false, 'clinical');
+		$('tr').has('span[hidetype=clinical][type=answer]').find('input').val('');
 	}
 
 	if($('tr').has('div[id=staffType]').find('input').eq(0).prop('checked') || $('tr').has('div[id=staffType]').find('input').eq(1).prop('checked'))
@@ -137,12 +139,14 @@ function hideShow ()
 		$('td').has('span[hidetype=sup], hr[hidetype=sup], div[hidetype=sup]').show();
 		requireHidden(true, 'sup');
 		$('tr').has('span[class=hiddenHeader]').find('input').prop('checked', true);
+		$('tr').has('span[id=in3]').find('input').val(supScore + ' / 5');
 	}
 	else
 	{
 		$('td').has('span[hidetype=sup], hr[hidetype=sup], div[hidetype=sup]').hide();
 		requireHidden(false, 'sup');
 		$('tr').has('span[class=hiddenHeader]').find('input').prop('checked', false);
+		$('tr').has('span[hidetype=sup][type=answer]').find('input').val('');
 	}
 }
 
