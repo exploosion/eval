@@ -685,7 +685,15 @@ function customCallBack ()
 		{
 			$('tr').has('div[id=victim]').find('input').prop('checked', true);
 		}
-				$('tr').has('div[id=victim]').next().find('textarea').val($('tr').has('div[id=victim]').next().find('textarea').val().slice(0, $('tr').has('div[id=victim]').next().find('textarea').val().length-2));
+		else
+		{
+			$('tr').has('div[id=victim]').find('input').prop('checked', true);
+			$('tr').has('div[id=victim]').next().find('textarea').val(noPlanMessage);
+		}
+		if($('tr').has('div[id=victim]').next().find('textarea').val() != '' && $('tr').has('div[id=victim]').next().find('textarea').val() != noPlanMessage)
+		{
+			$('tr').has('div[id=victim]').next().find('textarea').val($('tr').has('div[id=victim]').next().find('textarea').val().slice(0, $('tr').has('div[id=victim]').next().find('textarea').val().length-2));
+		}
 	});
 
 	//Load template for Development Plan
