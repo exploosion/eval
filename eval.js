@@ -242,10 +242,10 @@ function customCallBack ()
 	//Events to drive textarea resizes
 	setTimeout(function()
 	{
-		$('tr').has('div[id=autoGenerate]').next().find('textarea').change(function()
+		/*$('tr').has('div[id=autoGenerate]').next().find('textarea').change(function()
 		{
 			resize(this);
-		});
+		});*/
 		$('.plans').keyup(function()
 		{
 			resize(this);
@@ -335,7 +335,7 @@ function customCallBack ()
 	}
 
 	//On page load if no areas are set to 1 or 2, display message, else display areas requiring improvement
-	if($('tr').has('div[id=autoGenerate]').next().find('textarea').val() == '')
+	/*if($('tr').has('div[id=autoGenerate]').next().find('textarea').val() == '')
 	{
 		$('tr').has('div[id=autoGenerate]').next().find('textarea').val('Above areas meeting/exceeding expectations');
 		$('td').has('div[id=plan]').hide();
@@ -345,7 +345,7 @@ function customCallBack ()
 		$('td').has('div[id=plan]').show();
 	}
 	$('tr').has('div[id=autoGenerate]').next().find('textarea').trigger('change');
-	setTimeout(resize($('tr').has('div[id=autoGenerate]').next().find('textarea')[0]), 0);
+	setTimeout(resize($('tr').has('div[id=autoGenerate]').next().find('textarea')[0]), 0);*/
 	
 	//Some initial housekeeping
 	$('#credibleBI').hide();
@@ -533,10 +533,10 @@ function customCallBack ()
 	$('tr').has('span[id=in3]').find('input').val(supScore + ' / 5');
 	
 	//Expanding Areas Requiring Improvment textarea on page load
-	if($('tr').has('div[id=autoGenerate]').find('input').prop('checked') == false)
+	/*if($('tr').has('div[id=autoGenerate]').find('input').prop('checked') == false)
 	{
 		$('tr').has('div[id=autoGenerate]').find('input').trigger('click');
-	}
+	}*/
 	
 	//Main event handler when questions are clicked
 	$('tr').has('div[class=Q]').find('input').click(function()
@@ -592,7 +592,7 @@ function customCallBack ()
 			$('#plan' + index).prop('required', false); 
 		}
 		
-		requireImprovement = false;
+		/*requireImprovement = false;
 		$('tr').has('div[id=autoGenerate]').next().find('textarea').val('');
 		for(loopCount = 0; loopCount < length; loopCount++)
 		{
@@ -614,7 +614,7 @@ function customCallBack ()
 			$('td').has('div[id=plan]').show();
 		}
 		$('tr').has('div[id=autoGenerate]').next().find('textarea').trigger('change');
-		setTimeout(resize($('tr').has('div[id=autoGenerate]').next().find('textarea')[0]), 0);
+		setTimeout(resize($('tr').has('div[id=autoGenerate]').next().find('textarea')[0]), 0);*/
 
 		//Trying Something new, restore the following block if does not work
 		/*//Calcuate evaluation scores each time questions are clicked
