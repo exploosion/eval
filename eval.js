@@ -6,7 +6,7 @@ var loopCount;
 var qObject;
 var qArray;
 var tempArray;
-var requireImprovement;
+var requireImprovement = false;
 var split;
 var empTotal = 0;
 var empScore = 0;
@@ -592,6 +592,23 @@ function customCallBack ()
 			$('#plan' + index).prop('required', false); 
 		}
 		
+		requireImprovement = false;
+		for(loopCount = 0; loopCount < length; loopCount++)
+		{
+			if(qObject[loopCount].needed == true)
+			{
+				requireImprovement = true;
+			}
+		}
+		if(requireImprovement)
+		{
+			$('div[id=noPlan]').hide();
+		}
+		else
+		{
+			$('div[id=noPlan]').show();
+		}
+
 		/*requireImprovement = false;
 		$('tr').has('div[id=autoGenerate]').next().find('textarea').val('');
 		for(loopCount = 0; loopCount < length; loopCount++)
@@ -690,6 +707,24 @@ function customCallBack ()
 			e.preventDefault();
 		}
 	});
+
+	//On page load see if we need to show or hide noPlan div
+	requireImprovement = false;
+	for(loopCount = 0; loopCount < length; loopCount++)
+	{
+		if(qObject[loopCount].needed == true)
+		{
+			requireImprovement = true;
+		}
+	}
+	if(requireImprovement)
+	{
+		$('div[id=noPlan]').hide();
+	}
+	else
+	{
+		$('div[id=noPlan]').show();
+	}
 
 	//Button to refresh report if login error occurs
 	$('input[id=refreshReport]').click(function()
