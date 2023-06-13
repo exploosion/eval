@@ -781,6 +781,77 @@ function customCallBack ()
 	}, 1000);
 }
 
+async function asyncWaitForElement(context, selector) {
+  return new Promise((resolve, reject) => {
+    let el = context.querySelector(selector);
+    if (el) {
+      resolve(el);
+    }
+    new MutationObserver((mutationRecords, observer) => {
+      const element = context.querySelector(selector);
+      if (element) {
+        resolve(element);
+        observer.disconnect();
+      }
+    }).observe(context.documentElement, { childList: true, subtree: true });
+  });
+}
+
+function createEmbed(reportName, empId, appendSelector) {
+  const embedScript = document.createElement("script");
+  embedScript.type = "text/javascript";
+  embedScript.src = "https://reporting.kbbh.org:4443/javascripts/api/viz_v1.js";
+  const container = document.createElement("div");
+  container.id = "tableauContainer";
+  container.innerHTML = `<div class='tableauPlaceholder'><object class='tableauViz' style='display:none;'> <param name='host_url' value='https%3A%2F%2Freporting.kbbh.org%3A4443%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /> <param name='name' value=${reportName} /> <param name='tabs' value='no' /> <param name='toolbar' value='yes' /> <param name='showAppBanner' value='false' /> <param name='filter' value=${
+    "emp_id=" + empId
+  } /> </object> </div>`;
+  document.querySelector(appendSelector).appendChild(embedScript);
+  document.querySelector(appendSelector).appendChild(container);
+}
+
+function partialToolbarHide(context) {
+  context
+    .querySelector("#viz-viewer-toolbar")
+    .querySelectorAll(".toolbar-item")
+    .forEach((tbBtn) => {
+      if (tbBtn.id != "revert") {
+        tbBtn.remove();
+      }
+    });
+}
+
+let emp_id = "";
+
+async function getEmpId() {
+  asyncWaitForElement(parent.document, "frame[name='left']")
+    .then(() => {
+      emp_id = new URL(
+        parent.document
+          .querySelector("frame[name='left']")
+          .contentDocument.querySelector("#emp_view").href
+      ).searchParams.get("emp_id");
+    })
+    .then(() => {
+      return new Promise((resolve, reject) => {
+        if (emp_id != "") {
+          resolve();
+        }
+      });
+    });
+}
+
+getEmpId().then(() => {
+  asyncWaitForElement(document, "#reportContainer").then(() => {
+    createEmbed(
+      "StaffProductivityReport/StaffProductivity",
+      emp_id,
+      "#reportContainer"
+    );
+  });
+});
+
+
 //Only run code if page has a Complete button
 $(document).ready(function()
 {
