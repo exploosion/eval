@@ -389,7 +389,7 @@ function customCallBack ()
 
 	//Event to hide/show clinical/sup questions when staffType changed
 	$('tr').has('div[id=staffType]').find('input').change(hideShow);
-	document.querySelector('#staffTyoe').closest('table').querySelector('input').addEventListener('mouseleave', hideShow);
+	document.querySelector('#staffType').closest('table').querySelector('input').addEventListener('mouseleave', hideShow);
 
 	//Setting default parameters for error and late documentaion rates
 	$('tr').has('div[id=expectedErrorRate]').find('input').val('5.0%');
