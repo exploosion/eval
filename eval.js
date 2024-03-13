@@ -126,12 +126,14 @@ function hideShow ()
 		requireHidden(true, 'clinical');
 		$('input[id=refreshReport]').trigger('click');
 		$('tr').has('div[class=calc]').trigger('change');
+		document.querySelector('#reportContainer').hidden = true;
 	}
 	else
 	{
 		$('td').has('div[hidetype=clinical], span[hidetype=clinical]').hide();
 		requireHidden(false, 'clinical');
 		$('tr').has('span[hidetype=clinical][type=answer]').find('input').val('');
+		document.querySelector('#reportContainer').hidden = false;
 	}
 
 	if($('tr').has('div[id=staffType]').find('input').eq(0).prop('checked') || $('tr').has('div[id=staffType]').find('input').eq(1).prop('checked'))
