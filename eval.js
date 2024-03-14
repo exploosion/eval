@@ -879,6 +879,7 @@ function hideShowReport(){
 }
 
 document.addEventListner('DOMContentLoaded', () => {
+	hideShowReport();
 	[...document.querySelector('#staffType').closest('table').querySelectorAll('input')].forEach((input) => {
 	    input.addEventListener('click', hideShowReport);
 	    input.addEventListener('mouseleave', hideShowReport);
