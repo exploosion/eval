@@ -859,5 +859,31 @@ $(document).ready(function()
 	waitForElement('input[name=Complete]', customCallBack, 10);
 });
 
+//Hide Showing Staff Activity Report Based on Clinical
+function hideShowReport(){
+	let show = false;
+	document.querySelector('#reportContainer').hidden = true;
+
+	[...document.querySelector('#staffType').closest('table').querySelectorAll('input')].filter((input) => {
+		return input.closest('tr').innerHTML.includes('with caseload');
+	}).forEach((input => {
+		console.log(input);
+		if(input.checked){
+			show = true;
+		}
+	}));
+
+	if(show){
+		document.querySelector('#reportContainer').hidden = false;
+	}
+}
+
+document.addEventListner('DOMContentLoaded', () => {
+	[...document.querySelector('#staffType').closest('table').querySelectorAll('input')].forEach((input) => {
+	    input.addEventListener('click', hideShowReport);
+	    input.addEventListener('mouseleave', hideShowReport);
+	}); 
+});
+
 //Highlighting Professionalism questions
 //$('tr').find('div[type*=pro]').css('color', 'blue');
