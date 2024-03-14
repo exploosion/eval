@@ -878,7 +878,7 @@ function hideShowReport(){
 	}
 }
 
-document.addEventListner('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
 	hideShowReport();
 	[...document.querySelector('#staffType').closest('table').querySelectorAll('input')].forEach((input) => {
 	    input.addEventListener('click', hideShowReport);
